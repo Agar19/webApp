@@ -1,0 +1,36 @@
+footer {
+  background-color: #f8f9fa; /* Light background color */
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; /* Stack items vertically */
+}
+
+.footer-logo {
+  height: 60px; /* Adjust logo height */
+  margin-bottom: 10px; /* Space between logo and contact info */
+}
+
+.contact-info {
+  font-size: 16px; /* Font size for contact info */
+}
+
+.contact-info a {
+  color: #4CAF50; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.contact-info a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 14px; /* Smaller font size for copyright */
+  color: #6c757d; /* Darker gray for copyright text */
+}

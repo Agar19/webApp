@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodCraft - Calorie Calculator</title>
+    <link rel="stylesheet" href="/Css/CalorieCount.css">
+</head>
+<body>
+
+    <section>
+        
+        <form>
+            <select id="ingredient">
+                <option value="" disabled selected>Select an ingredient</option>
+                <option value="apple">Apple</option>
+                <option value="banana">Banana</option>
+                <option value="bread">Bread</option>
+                <option value="chicken">Chicken Breast</option>
+                <!-- Add more options here as needed -->
+            </select>
+
+            <input type="number" id="amount" placeholder="Amount (grams)">
+            <br>
+            <button type="button" onclick="calculateCalories()">Calculate</button>
+        </form>
+
+        <p id="result"></p>
+
+        <div class="history" id="history">
+            <h3>Calculation History</h3>
+            <!-- History of calculations will be added here -->
+        </div>
+    </section>
+
+    
+
+    <script src="Js/CalorieCount.js"></script>
+
+</body>
+</html>
