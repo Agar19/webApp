@@ -1,0 +1,142 @@
+{
+    "recipes": [
+        {
+            "id": 1,
+            "name": "Chicken Tikka Masala",
+            "image": "pics/chickenTikka.jpg",
+            "cookingTime": "1 hr",
+            "difficulty": "Medium", 
+            "calories": 400,
+            "rating": 4,
+            "reviewCount": 210,
+            "description": "A classic Indian-inspired dish with tender chicken in a creamy, spiced tomato sauce. Perfect served with rice or naan bread.",
+            "ingredients": [
+                "1.5 lbs boneless, skinless chicken breasts",
+                "1 cup plain yogurt",
+                "2 tbsp lemon juice",
+                "2 tsp garam masala",
+                "1 tsp ground cumin",
+                "1 tsp turmeric",
+                "2 tbsp vegetable oil",
+                "1 large onion, diced",
+                "3 garlic cloves, minced",
+                "1 tbsp ginger, grated",
+                "1 can (14 oz) crushed tomatoes",
+                "1 cup heavy cream",
+                "Fresh cilantro for garnish",
+                "Salt and pepper to taste"
+            ],
+            "instructions": [
+                "Marinate chicken in yogurt, lemon juice, and spices for 30 minutes.",
+                "Preheat oven to 400°F (200°C). Arrange marinated chicken on a baking sheet.",
+                "Bake chicken for 20-25 minutes until cooked through.",
+                "In a large pan, heat oil and sauté onions until translucent.",
+                "Add garlic and ginger, cook for 1 minute.",
+                "Add crushed tomatoes and simmer for 10 minutes.",
+                "Cut baked chicken into bite-sized pieces.",
+                "Add chicken to the sauce and stir in heavy cream.",
+                "Simmer for 5 minutes. Season with salt and pepper.",
+                "Garnish with fresh cilantro and serve hot."
+            ],
+            "comments": [
+                {
+                    "user": "Sarah M.",
+                    "text": "Absolutely delicious! The spices were perfectly balanced. Will definitely make again."
+                },
+                {
+                    "user": "Mike R.", 
+                    "text": "Great recipe. Tip: marinate the chicken overnight for even more flavor."
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Beef Bourguignon",
+            "image": "pics/beefbourg.jpg",
+            "cookingTime": "2.5 hrs",
+            "difficulty": "Hard",
+            "calories": 450,
+            "rating": 5,
+            "reviewCount": 89,
+            "description": "A rich and hearty French classic beef stew, slow-cooked to perfection with red wine, bacon, and herbs.",
+            "ingredients": [
+                "2 lbs beef chuck, cut into cubes",
+                "1/2 lb bacon, diced",
+                "2 carrots, sliced",
+                "1 large onion, chopped",
+                "3 garlic cloves, minced",
+                "2 cups red wine",
+                "2 cups beef broth",
+                "2 tbsp tomato paste",
+                "1 bouquet garni",
+                "Pearl onions",
+                "Mushrooms",
+                "Salt and pepper to taste"
+            ],
+            "instructions": [
+                "Season beef with salt and pepper.",
+                "Cook bacon in a large Dutch oven until crisp.",
+                "Brown beef cubes in bacon fat in batches.",
+                "Sauté onions, carrots, and garlic in the same pot.",
+                "Add wine, broth, tomato paste, and bouquet garni.",
+                "Return beef to the pot and simmer for 2-2.5 hours.",
+                "Sauté pearl onions and mushrooms separately.",
+                "Add sautéed vegetables to the stew in the last 30 minutes.",
+                "Adjust seasoning to taste.",
+                "Serve hot with crusty bread or over mashed potatoes."
+            ],
+            "comments": [
+                {
+                    "user": "Julia K.",
+                    "text": "Authentic French recipe! Takes time but absolutely worth it."
+                },
+                {
+                    "user": "Tom H.",
+                    "text": "Pro tip: Use a good quality red wine for the best flavor."
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Classic Spaghetti Carbonara",
+            "image": "pics/spaghetti-carbonara-382837d.jpg",
+            "cookingTime": "30 mins",
+            "difficulty": "Easy",
+            "calories": 500,
+            "rating": 4,
+            "reviewCount": 176,
+            "description": "A creamy Italian pasta dish with eggs, hard cheese, cured pork, and black pepper.",
+            "ingredients": [
+                "1 lb spaghetti",
+                "4 large eggs",
+                "1 cup Pecorino Romano cheese",
+                "1 cup Parmesan cheese",
+                "8 oz pancetta or guanciale",
+                "4 garlic cloves",
+                "Freshly ground black pepper",
+                "Salt for pasta water"
+            ],
+            "instructions": [
+                "Bring a large pot of salted water to boil.",
+                "Cook pancetta in a large skillet until crisp.",
+                "Whisk eggs, cheeses, and black pepper in a bowl.",
+                "Cook spaghetti until al dente.",
+                "Reserve 1 cup of pasta water before draining.",
+                "Quickly mix hot pasta with egg mixture.",
+                "Add pasta water to create a creamy sauce.",
+                "Mix in crispy pancetta.",
+                "Serve immediately with extra cheese and black pepper."
+            ],
+            "comments": [
+                {
+                    "user": "Marco P.",
+                    "text": "Authentic Italian carbonara. No cream needed!"
+                },
+                {
+                    "user": "Lisa R.",
+                    "text": "Quick and delicious weeknight dinner."
+                }
+            ]
+        }
+    ]
+}

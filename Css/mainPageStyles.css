@@ -6,26 +6,19 @@
     --header-height: 5em;
 }
 
-/* Base styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+    margin: 0;
+    padding: 0;
 }
-
-p, h3{
-    margin: 0.3125em;
-
-}
-
-
 
 img {
     max-width: 100%;
     height: auto;
 }
 
-/* Header styles */
 header {
     background-color: var(--background-color);
     padding: 1rem;
@@ -43,15 +36,14 @@ header {
 .logo {
     width: 100px;
     transition: transform 0.3s ease;
-}
-
-.logo:hover {
-    transform: scale(1.1);
+    cursor: pointer;
 }
 
 nav ul {
     list-style: none;
     display: flex;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
@@ -62,10 +54,6 @@ nav ul li a {
     text-decoration: none;
     color: var(--text-color);
     transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: var(--primary-color);
 }
 
 .search-form {
@@ -85,11 +73,6 @@ nav ul li a:hover {
     border: none;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.search-form button:hover {
-    background-color: darken(var(--primary-color), 10%);
 }
 
 .sign-up {
@@ -98,14 +81,8 @@ nav ul li a:hover {
     padding: 0.5rem 1rem;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
 }
 
-.sign-up:hover {
-    background-color: darken(var(--primary-color), 10%);
-}
-
-/* Main content styles */
 main {
     padding: 0;
     margin-top: var(--header-height);
@@ -113,43 +90,73 @@ main {
 
 .slider {
     position: relative;
-    margin-bottom: 2rem;
-    padding:  1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
     background-color: #fff;
 }
 
-.slider h2 {
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
+}
+
+.view-more {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .slider-container {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
 }
 
 .slider article {
-    flex: 0 0 600px;
-    margin-right: 1rem;
+    flex: 0 0 300px;
     background-color: #fff;
-    padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     scroll-snap-align: start;
     transition: transform 0.3s ease;
-}
-
-.slider article:hover {
-    transform: translateY(-5px);
+    overflow: hidden;
 }
 
 .slider article img {
     width: 100%;
-    height: 400px; 
-    object-fit: cover; /* This ensures the image covers the area without stretching */
-    border-radius: 5px;
-    margin-bottom: 1rem;
+    height: 250px; 
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+}
+
+.recipe-details {
+    padding: 0.75rem;
+}
+
+.recipe-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.recipe-review {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8em;
+}
+
+.stars {
+    color: #ffc107;
+}
+
+.review-count {
+    color: #888;
 }
 
 .slider .prev,
@@ -162,12 +169,6 @@ main {
     border: none;
     padding: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.slider .prev:hover,
-.slider .next:hover {
-    background-color: rgba(0,0,0,0.7);
 }
 
 .slider .prev {
@@ -178,8 +179,7 @@ main {
     right: 10px;
 }
 
-
-.background-clip{
+.background-clip {
     position: absolute;
     right: 0;
     left: 0;
@@ -187,33 +187,19 @@ main {
     z-index: -1;
 }
 
-.vidContainer{
+.vidContainer {
     height: 65vh;
 }
 
-
-
-/* Footer styles */
 footer {
     background-color: var(--secondary-color);
     color: white;
-    padding: 1rem;
+    padding: 1.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
-.FooterElement{
-    align-items: center;
-    text-align: justify;
-    width: 20rem;
-}
-.footerTag{
-    text-align: center;
-}
-
-
-/* Responsive styles */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -226,33 +212,11 @@ footer {
         align-items: center;
     }
 
-    nav ul li {
-        margin: 0.5rem 0;
-    }
-
-    .search-form {
-        width: 100%;
-        margin: 1rem 0;
-    }
-
-    .sign-up {
-        margin-top: 1rem;
-    }
-
-    main {
-        margin-top: 0;
-    }
-
     .slider article {
-        flex: 0 0 100%; /* mobile full width */
-    }
-
-    .slider article img {
-        height: 300px; /* mobile uyd bagasgasan hemjee */
+        flex: 0 0 100%;
     }
 }
 
-/* Dark mode */
 @media (prefers-color-scheme: dark) {
     :root {
         --background-color: #222;

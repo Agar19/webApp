@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img href="mainPage.html" src="pics/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo">
+        <img src="pics/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
         <nav>
             <ul>
                 <li><a href="profile.html">Profile</a></li>
@@ -32,58 +32,26 @@
                 <source src="pics/cooking2.mp4" type="video/mp4">
             </video> 
         </section>
-            
-            
-     
-
 
         <section class="slider" aria-label="Featured Recipes">
-            <h2 class="ArticleTag">Featured Recipes</h2>
-            <p class="viewMore" onclick="" >View more-></p>
+            <div class="slider-header">
+                <h2 class="ArticleTag">Featured Recipes</h2>
+                <a href="#" class="view-more">View More →</a>
+            </div>
             <div class="slider-container">
-                <article>
-                    <img src="pics/Corndogs.jpg" alt="Corn Dogs" loading="lazy">
-                    <h3>Homemade Corn Dogs</h3>
-                    <p>Delicious corn dogs made from scratch, perfect for a fun family dinner or party snack.</p>
-                </article>
-                <article>
-                    <img src="pics/beefbourg.jpg" alt="beef" loading="lazy">
-                    <h3>Beef Bourguignon</h3>
-                    <p>Франц үхрийн махны шөл хийх арга.</p>
-                </article>
-                <article>
-                    <img src="pics/chickenTikka.jpg" alt="chicken tikka masala" loading="lazy">
-                    <h3>Chichen Tikka Masala</h3>
-                    <p>Тахианы масала хийж сураарай.</p>
-                </article>
-                
-
+                <!-- Recipes will be dynamically loaded here -->
             </div>
             <button class="prev" aria-label="Previous slide">&#10094;</button>
             <button class="next" aria-label="Next slide">&#10095;</button>
         </section>
 
         <section class="slider" aria-label="Popular Recipes">
-            <h2 class="ArticleTag">Popular Recipes</h2>
+            <div class="slider-header">
+                <h2 class="ArticleTag">Popular Recipes</h2>
+                <a href="#" class="view-more">View More →</a>
+            </div>
             <div class="slider-container">
-                <article>
-                    <img src="pics/spaghetti-carbonara-382837d.jpg" alt="Spaghetti Carbonara" loading="lazy">
-                    <h3>Classic Spaghetti Carbonara</h3>
-                    <p>Жинхэнэ итали шпагети карбонара хийж сураарай.</p>
-                </article>
-                <article>
-                    <img src="pics/Steak.jpg" alt="Grilled Steak" loading="lazy">
-                    <h3>Perfect Grilled Steak</h3>
-                    <p>Хамгийн амттай төгс гриллдсэн стек хийх арга.</p>
-                </article>
-                <article>
-                    <img src="pics/pancakes.jpg" alt="pancakes" loading="lazy">
-                    <h3>Pancakes</h3>
-                    <p>Хэрхэн амттай pancake хийх арга.</p>
-                </article>
-                
-
-
+                <!-- Recipes will be dynamically loaded here -->
             </div>
             <button class="prev" aria-label="Previous slide">&#10094;</button>
             <button class="next" aria-label="Next slide">&#10095;</button>
@@ -93,20 +61,20 @@
     <footer>
         <article class="FooterElement">
             <h3>About FoodCraft</h3>
-            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't</p>
+            <p>Discover delicious recipes, cooking tips, and culinary inspiration. FoodCraft is your ultimate destination for food lovers and home chefs.</p>
         </article>
         <article class="FooterElement">
             <h3>Connect With Us</h3>
-            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't</p>
+            <p>Follow us on social media to stay updated with the latest recipes, cooking challenges, and foodie adventures.</p>
         </article>
         <article class="FooterElement">
-            <h3 >Newsletter</h3>
-            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't</p>
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter and get the best recipes, cooking tips, and exclusive content delivered straight to your inbox.</p>
         </article>
     </footer>
 
+    <script src="recipe-loader.js"></script>
     <script>    
-        
         document.querySelectorAll('.slider').forEach(slider => {
             const container = slider.querySelector('.slider-container');
             const prevBtn = slider.querySelector('.prev');

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details - FoodCraft</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
+    <link rel="stylesheet" href="Css/mainPageStyles.css">
+    <style>
+        .recipe-detail {
+            max-width: 1200px;
+            width: 95%;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .recipe-hero {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .recipe-hero img {
+            max-width: 50%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .recipe-hero-details {
+            flex: 1;
+        }
+        .ingredients, .instructions {
+            margin-bottom: 2rem;
+        }
+        .ingredients ul, .instructions ol {
+            padding-left: 2rem;
+        }
+        .comments {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        .comment {
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 0;
+        }
+        .comment:last-child {
+            border-bottom: none;
+        }
+        .comment-form {
+            margin-top: 1rem;
+        }
+        .comment-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .comment-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .recipe-hero {
+                flex-direction: column;
+            }
+            .recipe-hero img {
+                max-width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="pics/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
+        <nav>
+            <ul>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Calorie count</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <form role="search" class="search-form">
+            <input type="search" placeholder="Search recipes..." aria-label="Search recipes">
+            <button type="submit">Search</button>
+        </form>
+        <a href="login.html" class="sign-up">Sign Up/Log In</a>
+    </header>
+
+    <main>
+        <div class="recipe-detail">
+            <div class="recipe-hero">
+                <img src="" alt="Recipe Image">
+                <div class="recipe-hero-details">
+                    <h1></h1>
+                    <div class="recipe-meta">
+                        <span class="cooking-time"></span>
+                        <span class="difficulty"></span>
+                        <span class="calories"></span>
+                    </div>
+                    <div class="recipe-review">
+                        <div class="stars"></div>
+                        <span class="review-count"></span>
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="ingredients">
+                <h2>Ingredients</h2>
+                <ul></ul>
+            </div>
+
+            <div class="instructions">
+                <h2>Instructions</h2>
+                <ol></ol>
+            </div>
+
+            <div class="comments">
+                <h2>Comments</h2>
+                <div class="comment-list"></div>
+                <div class="comment-form">
+                    <h3>Leave a Comment</h3>
+                    <textarea placeholder="Write your comment here..."></textarea>
+                    <button>Submit Comment</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <article class="FooterElement">
+            <h3>About FoodCraft</h3>
+            <p>Discover delicious recipes, cooking tips, and culinary inspiration. FoodCraft is your ultimate destination for food lovers and home chefs.</p>
+        </article>
+        <article class="FooterElement">
+            <h3>Connect With Us</h3>
+            <p>Follow us on social media to stay updated with the latest recipes, cooking challenges, and foodie adventures.</p>
+        </article>
+        <article class="FooterElement">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter and get the best recipes, cooking tips, and exclusive content delivered straight to your inbox.</p>
+        </article>
+    </footer>
+
+    <script src="recipe-loader.js"></script>
+</body>
+</html>
