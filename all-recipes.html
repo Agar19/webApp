@@ -93,7 +93,154 @@
             <p>Subscribe to our newsletter and get the best recipes, cooking tips, and exclusive content delivered straight to your inbox.</p>
         </article>
     </footer>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Function to load recipes from JSON
+        async function loadRecipes() {
+            try {
+                const response = await fetch('recipes.json');
+                const data = await response.json();
+                return data.recipes;
+            } catch (error) {
+                console.error('Error loading recipes:', error);
+                return [];
+            }
+        }
 
-    <script src="recipes-page.js"></script>
+        // Function to display recipes on the all recipes page
+        async function displayAllRecipes() {
+            const recipesContainer = document.querySelector('.recipes-container');
+            const pageNumberSpan = document.querySelector('.page-number');
+            const prevButton = document.querySelector('.prev-page');
+            const nextButton = document.querySelector('.next-page');
+
+            const recipes = await loadRecipes();
+            const recipesPerPage = 6; // Adjust as needed
+            let currentPage = 1;
+
+            function displayRecipesForPage(page) {
+                const startIndex = (page - 1) * recipesPerPage;
+                const endIndex = startIndex + recipesPerPage;
+                const pageRecipes = recipes.slice(startIndex, endIndex);
+
+                recipesContainer.innerHTML = ''; // Clear existing content
+
+                pageRecipes.forEach(recipe => {
+                    const articleElement = document.createElement('article');
+                    articleElement.classList.add('recipe-card');
+                    articleElement.innerHTML = `
+                        <img src="${recipe.image}" alt="${recipe.name}" loading="lazy">
+                        <div class="recipe-details">
+                            <h3>${recipe.name}</h3>
+                            <div class="recipe-meta">
+                                <span class="cooking-time">⏰ ${recipe.cookingTime}</span>
+                                <span class="difficulty">🔥 ${recipe.difficulty}</span>
+                                <span class="calories">🍽️ ${recipe.calories} Cal</span>
+                            </div>
+                            <div class="recipe-review">
+                                <div class="stars">${'★'.repeat(recipe.rating)}${'☆'.repeat(5 - recipe.rating)}</div>
+                                <span class="review-count">(${recipe.reviewCount} reviews)</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Add click event to navigate to recipe detail
+                    articleElement.addEventListener('click', () => {
+                        window.location.href = `recipe-detail.html?id=${recipe.id}`;
+                    });
+                    
+                    recipesContainer.appendChild(articleElement);
+                });
+
+                // Update pagination
+                const totalPages = Math.ceil(recipes.length / recipesPerPage);
+                pageNumberSpan.textContent = `Page ${page} of ${totalPages}`;
+
+                // Enable/disable pagination buttons
+                prevButton.disabled = page === 1;
+                nextButton.disabled = page === totalPages;
+            }
+
+            // Initial display
+            displayRecipesForPage(currentPage);
+
+            // Pagination event listeners
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayRecipesForPage(currentPage);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                const totalPages = Math.ceil(recipes.length / recipesPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayRecipesForPage(currentPage);
+                }
+            });
+
+            // Filtering and sorting
+            const categorySelect = document.getElementById('category-select');
+            const sortSelect = document.getElementById('sort-select');
+            const difficultyCheckboxes = document.querySelectorAll('input[name="difficulty"]');
+
+            function applyFilters() {
+                const selectedCategory = categorySelect.value;
+                const selectedSort = sortSelect.value;
+                const selectedDifficulties = Array.from(difficultyCheckboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.value);
+
+                let filteredRecipes = recipes.filter(recipe => {
+                    const categoryMatch = !selectedCategory || recipe.category.toLowerCase() === selectedCategory;
+                    const difficultyMatch = selectedDifficulties.length === 0 || 
+                        selectedDifficulties.includes(recipe.difficulty.toLowerCase());
+                    return categoryMatch && difficultyMatch;
+                });
+
+                // Sorting
+                switch (selectedSort) {
+                    case 'newest':
+                        filteredRecipes.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                        break;
+                    case 'rating':
+                        filteredRecipes.sort((a, b) => b.rating - a.rating);
+                        break;
+                    case 'difficulty-easy':
+                        filteredRecipes = filteredRecipes.filter(r => r.difficulty.toLowerCase() === 'easy');
+                        break;
+                    case 'difficulty-hard':
+                        filteredRecipes = filteredRecipes.filter(r => r.difficulty.toLowerCase() === 'hard');
+                        break;
+                    case 'prep-time':
+                        filteredRecipes.sort((a, b) => {
+                            const parseTime = (timeStr) => {
+                                const [num, unit] = timeStr.split(' ');
+                                return parseInt(num);
+                            };
+                            return parseTime(a.cookingTime) - parseTime(b.cookingTime);
+                        });
+                        break;
+                }
+
+                // Reset to first page of filtered results
+                currentPage = 1;
+                displayRecipesForPage(currentPage);
+            }
+
+            // Add event listeners for filters
+            categorySelect.addEventListener('change', applyFilters);
+            sortSelect.addEventListener('change', applyFilters);
+            difficultyCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', applyFilters);
+            });
+        }
+
+        // Run the display function
+        displayAllRecipes();
+    });
+    </script>
 </body>
 </html>
