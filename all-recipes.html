@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes | FoodCraft</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
+    <link rel="stylesheet" href="Css/all-recipes.css">
+</head>
+<body>
+    <header>
+        <img src="pics/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
+        <nav>
+            <ul>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Calorie count</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <form role="search" class="search-form">
+            <input type="search" placeholder="Search recipes..." aria-label="Search recipes">
+            <button type="submit">Search</button>
+        </form>
+        <a href="login.html" class="sign-up">Sign Up/Log In</a>
+    </header>
+
+    <main>
+        <section class="recipes-filters">
+            <div class="filter-container">
+                <div class="category-filter">
+                    <label for="category-select">Category:</label>
+                    <select id="category-select">
+                        <option value="">All Categories</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                    </select>
+                </div>
+
+                <div class="sort-filter">
+                    <label for="sort-select">Sort By:</label>
+                    <select id="sort-select">
+                        <option value="newest">Newest</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="difficulty-easy">Easiest</option>
+                        <option value="difficulty-hard">Most Challenging</option>
+                        <option value="prep-time">Shortest Prep Time</option>
+                    </select>
+                </div>
+
+                <div class="difficulty-filter">
+                    <label>Difficulty:</label>
+                    <div class="difficulty-options">
+                        <input type="checkbox" id="easy" name="difficulty" value="easy">
+                        <label for="easy">Easy</label>
+                        <input type="checkbox" id="medium" name="difficulty" value="medium">
+                        <label for="medium">Medium</label>
+                        <input type="checkbox" id="hard" name="difficulty" value="hard">
+                        <label for="hard">Hard</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recipes-grid">
+            <div class="recipes-container">
+                <!-- Recipes will be dynamically loaded here -->
+            </div>
+            <div class="pagination">
+                <button class="prev-page">Previous</button>
+                <span class="page-number">Page 1 of 5</span>
+                <button class="next-page">Next</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <article class="FooterElement">
+            <h3>About FoodCraft</h3>
+            <p>Discover delicious recipes, cooking tips, and culinary inspiration. FoodCraft is your ultimate destination for food lovers and home chefs.</p>
+        </article>
+        <article class="FooterElement">
+            <h3>Connect With Us</h3>
+            <p>Follow us on social media to stay updated with the latest recipes, cooking challenges, and foodie adventures.</p>
+        </article>
+        <article class="FooterElement">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter and get the best recipes, cooking tips, and exclusive content delivered straight to your inbox.</p>
+        </article>
+    </footer>
+
+    <script src="recipes-page.js"></script>
+</body>
+</html>
