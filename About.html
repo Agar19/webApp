@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Count | FoodCraft</title>
+    <title>About FoodCraft | Culinary Inspiration</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
     <link rel="stylesheet" href="Css/mainPageStyles.css">
-    <link rel="stylesheet" href="Css/CalorieCount.css">
+    <link rel="stylesheet" href="Css/about.css">
 </head>
 <body>
     <header>
@@ -27,41 +27,45 @@
         <a href="login.html" class="sign-up">Sign Up/Log In</a>
     </header>
 
-    <main class="calorie-count-page">
-        <section class="calorie-tracker">
-            <h1>Meal Calorie Calculator</h1>
-            <div class="ingredient-search">
-                <input type="text" id="ingredient-input" placeholder="Search ingredients...">
-                <ul id="ingredient-suggestions" class="suggestions"></ul>
-            </div>
+    <main class="about-page">
+        <section class="about-hero">
+            <h1>Welcome to FoodCraft</h1>
+            <p>Inspiring culinary creativity, one recipe at a time</p>
+        </section>
 
-            <div class="ingredient-form">
-                <select id="selected-ingredient">
-                    <option value="">Select Ingredient</option>
-                </select>
-                <input type="number" id="ingredient-amount" placeholder="Amount (g)">
-                <button id="add-ingredient">Add Ingredient</button>
-            </div>
+        <section class="about-mission">
+            <h2>Our Mission</h2>
+            <p>FoodCraft is more than just a recipe website. We're a community of passionate food lovers, home chefs, and culinary enthusiasts dedicated to sharing delicious recipes, cooking tips, and inspiring creativity in the kitchen.</p>
+        </section>
 
-            <div class="meal-ingredients">
-                <h2>Current Meal Ingredients</h2>
-                <table id="ingredients-table">
-                    <thead>
-                        <tr>
-                            <th>Ingredient</th>
-                            <th>Amount (g)</th>
-                            <th>Calories</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ingredients-list"></tbody>
-                </table>
+        <section class="about-features">
+            <div class="feature">
+                <h3>Diverse Recipes</h3>
+                <p>From quick weeknight meals to gourmet weekend dishes, we've got recipes for every skill level and taste.</p>
             </div>
+            <div class="feature">
+                <h3>Calorie Tracking</h3>
+                <p>Monitor your nutritional intake with our easy-to-use calorie counting tool.</p>
+            </div>
+            <div class="feature">
+                <h3>Community Driven</h3>
+                <p>Share your own recipes, tips, and connect with food lovers around the world.</p>
+            </div>
+        </section>
 
-            <div class="meal-summary">
-                <h2>Meal Summary</h2>
-                <p>Total Calories: <span id="total-calories">0</span> kcal</p>
-                <button id="reset-meal">Reset Meal</button>
+        <section class="about-team">
+            <h2>Meet Our Team</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="pics/camus.jpg" alt="Team Member 1">
+                    <h3>Albert Camus</h3>
+                    <p>Founder & Head Chef</p>
+                </div>
+                <div class="team-member">
+                    <img src="pics/Nietzsche.jpg" alt="Team Member 2">
+                    <h3>Nietzsche</h3>
+                    <p>Nutrition Expert</p>
+                </div>
             </div>
         </section>
     </main>
@@ -80,7 +84,5 @@
             <p>Subscribe to our newsletter and get the best recipes, cooking tips, and exclusive content delivered straight to your inbox.</p>
         </article>
     </footer>
-
-    <script src="calorie-counter.js"></script>
 </body>
 </html>
