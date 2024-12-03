@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return JSON.parse(storedRecipes).recipes;
         }
 
-        // If no localStorage, fetch from JSON file
+        // If no localStorage, fetch from JSON file //i want to Change This so that i can use my recipe.json file to be my database
         try {
             const response = await fetch('recipes.json');
             const data = await response.json();
