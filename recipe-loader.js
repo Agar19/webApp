@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Function to load recipes from JSON
+    // Load Json
     async function loadRecipes() {
+        // Check localStorage first
+        const storedRecipes = localStorage.getItem('recipes');
+        if (storedRecipes) {
+            return JSON.parse(storedRecipes).recipes;
+        }
+
+        // If no localStorage, fetch from JSON file
         try {
             const response = await fetch('recipes.json');
             const data = await response.json();

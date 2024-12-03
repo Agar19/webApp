@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recipe - FoodCraft</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
+    <link rel="stylesheet" href="Css/mainPageStyles.css">
+    <style>
+        .add-recipe-form {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+        }
+        .add-recipe-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .add-recipe-form input, 
+        .add-recipe-form textarea, 
+        .add-recipe-form select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .add-recipe-form .ingredient-section,
+        .add-recipe-form .instruction-section {
+            margin-bottom: 1rem;
+        }
+        .add-recipe-form .btn-add {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .add-recipe-form .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="pics/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
+        <nav>
+            <ul>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="all-recipes.html">Recipes</a></li>
+                <li><a href="add-recipe.html">Add recipe</a></li>
+                <li><a href="CalorieCount.html">Calorie count</a></li>
+                <li><a href="About.html">About</a></li>
+            </ul>
+        </nav>
+        <form role="search" class="search-form">
+            <input type="search" placeholder="Search recipes..." aria-label="Search recipes">
+            <button type="submit">Search</button>
+        </form>
+        <a href="login.html" class="sign-up">Sign Up/Log In</a>
+    </header>
+
+    <main>
+        <form id="addRecipeForm" class="add-recipe-form">
+            <h1>Add New Recipe</h1>
+
+            <label for="recipeName">Recipe Name</label>
+            <input type="text" id="recipeName" required>
+
+            <label for="recipeDescription">Description</label>
+            <textarea id="recipeDescription" required rows="3"></textarea>
+
+            <label for="cookingTime">Cooking Time</label>
+            <input type="text" id="cookingTime" placeholder="e.g., 1 hr" required>
+
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty" required>
+                <option value="">Select Difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+
+            <label for="calories">Calories</label>
+            <input type="number" id="calories" required>
+
+            <label for="rating">Rating</label>
+            <select id="rating" required>
+                <option value="">Select Rating</option>
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="5">5 Stars</option>
+            </select>
+
+            <label>Ingredients</label>
+            <div id="ingredientsContainer">
+                <div class="ingredient-section">
+                    <input type="text" name="ingredient" placeholder="Enter ingredient" required>
+                </div>
+            </div>
+            <button type="button" id="addIngredientBtn" class="btn-add">+ Add Ingredient</button>
+
+            <label>Instructions</label>
+            <div id="instructionsContainer">
+                <div class="instruction-section">
+                    <input type="text" name="instruction" placeholder="Enter instruction step" required>
+                </div>
+            </div>
+            <button type="button" id="addInstructionBtn" class="btn-add">+ Add Instruction</button>
+
+            <label for="recipeImage">Recipe Image URL</label>
+            <input type="text" id="recipeImage" placeholder="Enter image URL" required>
+
+            <button type="submit" class="btn-submit">Add Recipe</button>
+        </form>
+    </main>
+
+    <footer>
+        <article class="FooterElement">
+            <h3>About FoodCraft</h3>
+            <p>Discover delicious recipes, cooking tips, and culinary inspiration. FoodCraft is your ultimate destination for food lovers and home chefs.</p>
+        </article>
+        <article class="FooterElement">
+            <h3>Connect With Us</h3>
+            <p>Follow us on social media to stay updated with the latest recipes, cooking challenges, and foodie adventures.</p>
+        </article>
+        <article class="FooterElement">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter and get the best recipes, cooking tips, and exclusive content delivered straight to your inbox.</p>
+        </article>
+    </footer>
+
+    <script src="add-recipe.js"></script>
+</body>
+</html>
