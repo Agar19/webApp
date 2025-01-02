@@ -49,58 +49,48 @@ document.addEventListener('DOMContentLoaded', () => {
         const instructionInputs = document.querySelectorAll('input[name="instruction"]');
         const instructions = Array.from(instructionInputs).map(input => input.value);
 
-        // Load existing recipes
-        let recipes;
-        try {
-            const response = await fetch('recipes.json');
-            const data = await response.json();
-            recipes = data.recipes;
-        } catch (error) {
-            console.error('Error loading existing recipes:', error);
-            recipes = [];
-        }
-
         // Prepare new recipe object
         const newRecipe = {
-            id: recipes.length > 0 ? Math.max(...recipes.map(r => r.id)) + 1 : 1,
             name: document.getElementById('recipeName').value,
             image: document.getElementById('recipeImage').value,
             cookingTime: document.getElementById('cookingTime').value,
             difficulty: document.getElementById('difficulty').value,
             calories: parseInt(document.getElementById('calories').value),
             rating: parseInt(document.getElementById('rating').value),
-            reviewCount: 0, // Default to 0 for new recipes
+            reviewCount: 0,
             description: document.getElementById('recipeDescription').value,
             ingredients: ingredients,
             instructions: instructions,
-            comments: [] // Start with no comments
+            comments: []
         };
 
-        // Add new recipe to existing recipes
-        recipes.push(newRecipe);
+        try {
+            // Send the new recipe to the backend
+            const response = await fetch('http://localhost:3000/api/recipes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newRecipe)
+            });
 
-        // Update the entire recipes object
-        const updatedRecipesData = { recipes: recipes };
+            if (!response.ok) {
+                throw new Error('Failed to save recipe');
+            }
 
-        // In a real-world scenario, you'd typically send this to a backend
-        // For this example, we'll use localStorage to simulate persistence
-        localStorage.setItem('recipes', JSON.stringify(updatedRecipesData));
-
-        alert('Recipe added successfully!');
-        window.location.href = `recipe-detail.html?id=${newRecipe.id}`;
+            const savedRecipe = await response.json();
+            alert('Recipe added successfully!');
+            window.location.href = `recipe-detail.html?id=${savedRecipe.id}`;
+        } catch (error) {
+            console.error('Error saving recipe:', error);
+            alert('Failed to save recipe. Please try again.');
+        }
     });
 
-    // Modify recipe-loader.js to first check localStorage
+    // Modified recipe loading function
     async function loadRecipes() {
-        // Check localStorage first
-        const storedRecipes = localStorage.getItem('recipes');
-        if (storedRecipes) {
-            return JSON.parse(storedRecipes).recipes;
-        }
-
-        // If no localStorage, fetch from JSON file //i want to Change This so that i can use my recipe.json file to be my database
         try {
-            const response = await fetch('recipes.json');
+            const response = await fetch('http://localhost:3000/api/recipes');
             const data = await response.json();
             return data.recipes;
         } catch (error) {
