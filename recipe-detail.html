@@ -15,45 +15,94 @@
             background-color: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+
         .recipe-hero {
             display: flex;
             gap: 2rem;
             margin-bottom: 2rem;
         }
+
         .recipe-hero img {
             max-width: 50%;
             border-radius: 10px;
             object-fit: cover;
         }
+
         .recipe-hero-details {
             flex: 1;
         }
+
+        .recipe-title-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .recipe-title-section h1 {
+            margin: 0;
+        }
+
+        .favorite-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .favorite-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .favorite-btn.active {
+            background-color: #d32f2f;
+        }
+
+        .favorite-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
         .ingredients, .instructions {
             margin-bottom: 2rem;
         }
+
         .ingredients ul, .instructions ol {
             padding-left: 2rem;
         }
+
         .comments {
             background-color: #f4f4f4;
             padding: 1rem;
             border-radius: 5px;
         }
+
         .comment {
             border-bottom: 1px solid #ddd;
             padding: 1rem 0;
         }
+
         .comment:last-child {
             border-bottom: none;
         }
+
         .comment-form {
             margin-top: 1rem;
         }
+
         .comment-form textarea {
             width: 100%;
             padding: 0.5rem;
             margin-bottom: 1rem;
         }
+
         .comment-form button {
             background-color: var(--primary-color);
             color: white;
@@ -75,12 +124,12 @@
 </head>
 <body>
     <header>
-        <img src="pics/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
+        <img src="./images/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
         <nav>
             <ul>
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="all-recipes.html">Recipes</a></li>
-                <li><a href="#">Categories</a></li>
+                <li><a href="add-recipe.html">Add recipe</a></li>
                 <li><a href="CalorieCount.html">Calorie count</a></li>
                 <li><a href="About.html">About</a></li>
             </ul>
@@ -97,7 +146,15 @@
             <div class="recipe-hero">
                 <img src="" alt="Recipe Image">
                 <div class="recipe-hero-details">
-                    <h1></h1>
+                    <div class="recipe-title-section">
+                        <h1></h1>
+                        <button class="favorite-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                            Add to Favorite
+                        </button>
+                    </div>
                     <div class="recipe-meta">
                         <span class="cooking-time"></span>
                         <span class="difficulty"></span>
@@ -149,5 +206,18 @@
     </footer>
 
     <script src="recipe-loader.js"></script>
+    <script>
+        // Add this JavaScript to handle the favorite button functionality
+        document.querySelector('.favorite-btn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            const isFavorite = this.classList.contains('active');
+            this.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                ${isFavorite ? 'Added to Favorites' : 'Add to Favorite'}
+            `;
+        });
+    </script>
 </body>
 </html>
