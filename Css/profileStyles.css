@@ -174,39 +174,36 @@ main {
     gap: 20px;
 }
 
-.recipe-item {
+.slider-container {
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     transition: transform 0.3s;
+    padding: 15px;
 }
 
-.recipe-item:hover {
+.slider-container:hover {
     transform: translateY(-5px);
 }
 
-.recipe-item img {
+.slider-container img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
-.recipe-content {
-    padding: 15px;
-}
-
-.recipe-item h3 {
+.slider-container h3 {
     margin-bottom: 10px;
     color: var(--primary-color);
 }
 
-.recipe-item p {
+.slider-container p {
     font-size: 0.9em;
     color: #666;
 }
 
-.recipe-item .rating {
+.slider-container .rating {
     color: var(--secondary-color);
     margin-top: 10px;
 }

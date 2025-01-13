@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function displayRecipeCards() {
         const recipes = await loadRecipes();
         const sliderContainers = document.querySelectorAll('.slider-container');
-
+        
         if (sliderContainers.length) {
             sliderContainers.forEach((container, index) => {
                 container.innerHTML = ''; // Clear existing content

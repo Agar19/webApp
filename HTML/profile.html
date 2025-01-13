@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorite Recipes</title>
+    <title>Profile - FoodCraft</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../Css/profileStyles.css">
 </head>
@@ -19,72 +19,46 @@
                 <li><a href="About.html">About</a></li>
             </ul>
         </nav>
-        <form role="search" class="search-form">
-            <input type="search" placeholder="Search recipes..." aria-label="Search recipes">
+        <form class="search-form">
+            <input type="search" placeholder="Search recipes...">
             <button type="submit">Search</button>
         </form>
         <a href="login.html" class="sign-up">Sign Up/Log In</a>
     </header>
+    
     <main>
         <section class="profile">
-            <img src="../images/defaultProfile.png" alt="Profile Picture">
+            <img src="../images/defaultProfile.png" alt="Profile Picture" class="profile-image">
             <h3>E. Agarbayar</h3>
             <p><strong>First Name:</strong> E.</p>
             <p><strong>Last Name:</strong> Agarbayar</p>
             <p><strong>Email:</strong> agaraa247@gmail.com</p>
             <p><strong>Phone Number:</strong> 88154368</p>
             <p><strong>BIO:</strong> Passionate food lover and home cook. Always experimenting with new flavors and techniques.</p>
-            <button><i class="fas fa-edit"></i> Edit Profile</button>
+            <button class="edit-profile">
+                <i class="fas fa-edit"></i> Edit Profile
+            </button>
         </section>
+
         <section class="recipes">
             <h2>Favorite Recipes</h2>
-            <ul class="recipe-grid">
-                <li class="recipe-item">
-                    <img src="../images/spaghetti-carbonara-382837d.jpg" alt="Spaghetti Carbonara" loading="lazy">
-                    <article class="recipe-content">
-                        <h3>Spaghetti Carbonara</h3>
-                        <p>Жинхэнэ итали шпагети карбонара хийж сураарай.</p>
-                        <aside class="rating" aria-label="4 out of 5 stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </aside>
-                    </article>
-                </li>
-                <li class="recipe-item">
-                    <img src="../images/chickenTikka.jpg" alt="Chicken Tikka Masala" loading="lazy">
-                    <article class="recipe-content">
-                        <h3>Chicken Tikka Masala</h3>
-                        <p>Тахианы масала хийж сураарай.</p>
-                        <aside class="rating" aria-label="4.5 out of 5 stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </aside>
-                    </article>
-                </li>
-                <li class="recipe-item">
-                    <img src="../images/beefbourg.jpg" alt="Beef Bourguignon" loading="lazy">
-                    <article class="recipe-content">
-                        <h3>Beef Bourguignon</h3>
-                        <p>Франц үхрийн махны шөл хийх арга.</p>
-                        <aside class="rating" aria-label="5 out of 5 stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </aside>
-                    </article>
-                </li>
-                
-            </ul>
+            <div class="recipe-grid">
+                <div class="slider-container">
+                    <!-- Recipe content will be loaded dynamically -->
+                </div>
+                <div class="slider-container">
+                    <!-- Recipe content will be loaded dynamically -->
+                </div>
+                <div class="slider-container">
+                    <!-- Recipe content will be loaded dynamically -->
+                </div>
+                <div class="slider-container">
+                    <!-- Recipe content will be loaded dynamically -->
+                </div>
+            </div>
         </section>
-                
     </main>
+
+    <script src="../JS/recipe-loader.js"></script>
 </body>
 </html>
