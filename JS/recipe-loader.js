@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // If no localStorage, fetch from JSON file
         try {
-            const response = await fetch('recipes.json');
+            const response = await fetch('../Json/recipes.json');
             const data = await response.json();
             return data.recipes;
         } catch (error) {

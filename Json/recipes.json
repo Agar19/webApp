@@ -3,7 +3,7 @@
         {
             "id": 1,
             "name": "Chicken Tikka Masala",
-            "image": "./images/chickenTikka.jpg",
+            "image": "../images/chickenTikka.jpg",
             "cookingTime": "1 hr",
             "difficulty": "Medium", 
             "calories": 400,
@@ -52,7 +52,7 @@
         {
             "id": 2,
             "name": "Beef Bourguignon",
-            "image": "./images/beefbourg.jpg",
+            "image": "../images/beefbourg.jpg",
             "cookingTime": "2.5 hrs",
             "difficulty": "Hard",
             "calories": 450,
@@ -99,7 +99,7 @@
         {
             "id": 3,
             "name": "Classic Spaghetti Carbonara",
-            "image": "./images/spaghetti-carbonara-382837d.jpg",
+            "image": "../images/spaghetti-carbonara-382837d.jpg",
             "cookingTime": "30 mins",
             "difficulty": "Easy",
             "calories": 500,

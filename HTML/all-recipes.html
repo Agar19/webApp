@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes | FoodCraft</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
-    <link rel="stylesheet" href="Css/all-recipes.css">
+    <link rel="stylesheet" href="../Css/all-recipes.css">
 </head>
 <body>
     <header>
-        <img src="./images/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
+        <img src="../images/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
         <nav>
             <ul>
                 <li><a href="profile.html">Profile</a></li>
@@ -94,12 +94,14 @@
         </article>
     </footer>
     
+
+    <script src="../JS/recipe-loader.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         // Function to load recipes from JSON
         async function loadRecipes() {
             try {
-                const response = await fetch('recipes.json');
+                const response = await fetch('../Json/recipes.json');
                 const data = await response.json();
                 return data.recipes;
             } catch (error) {
@@ -242,5 +244,6 @@
         displayAllRecipes();
     });
     </script>
+
 </body>
 </html>
