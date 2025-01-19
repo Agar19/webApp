@@ -28,7 +28,7 @@ app.get('/api/recipes', async (req, res) => {
 
 // Handle all other routes by sending the index.html
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, '/pages/mainPage.html'));
 });
 
 // Error handling middleware

@@ -1,4 +1,3 @@
-// router.js
 const router = {
     init() {
         // Handle initial route
