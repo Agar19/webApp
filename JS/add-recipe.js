@@ -37,6 +37,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Load existing recipes and add new recipe
+    async function addRecipeToJSON(newRecipe) {
+        try {
+            // Load existing recipes
+            const response = await fetch('../Json/recipes.json');
+            const data = await response.json();
+            
+            // Generate new ID
+            const maxId = Math.max(...data.recipes.map(recipe => recipe.id), 0);
+            newRecipe.id = maxId + 1;
+            
+            // Add new recipe to array
+            data.recipes.push(newRecipe);
+            
+            // Save updated recipes using the server endpoint
+            const saveResponse = await fetch('http://localhost:3000/save-recipe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!saveResponse.ok) {
+                const errorData = await saveResponse.json();
+                throw new Error(errorData.details || 'Failed to save recipe');
+            }
+
+            return newRecipe;
+        } catch (error) {
+            console.error('Error saving recipe:', error);
+            throw error;
+        }
+    }
+
     // Form submission
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -49,6 +84,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const instructionInputs = document.querySelectorAll('input[name="instruction"]');
         const instructions = Array.from(instructionInputs).map(input => input.value);
 
+        // Collect meal types
+        const mealTypeInputs = document.querySelectorAll('input[name="mealType"]:checked');
+        const mealTypes = Array.from(mealTypeInputs).map(input => input.value);
+
+        // Collect dietary preferences
+        const dietaryInputs = document.querySelectorAll('input[name="dietary"]:checked');
+        const dietary = Array.from(dietaryInputs).reduce((acc, input) => {
+            acc[input.value] = true;
+            return acc;
+        }, {
+            IsMeat: false,
+            IsVegan: false,
+            IsVegetarian: false,
+            IsDessert: false
+        });
+
         // Prepare new recipe object
         const newRecipe = {
             name: document.getElementById('recipeName').value,
@@ -56,41 +107,30 @@ document.addEventListener('DOMContentLoaded', () => {
             cookingTime: document.getElementById('cookingTime').value,
             difficulty: document.getElementById('difficulty').value,
             calories: parseInt(document.getElementById('calories').value),
-            rating: parseInt(document.getElementById('rating').value),
+            rating: 0,
             reviewCount: 0,
             description: document.getElementById('recipeDescription').value,
             ingredients: ingredients,
             instructions: instructions,
+            MealType: mealTypes,
+            ...dietary,
             comments: []
         };
 
         try {
-            // Send the new recipe to the backend
-            const response = await fetch('http://localhost:3000/api/recipes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newRecipe)
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to save recipe');
-            }
-
-            const savedRecipe = await response.json();
+            const savedRecipe = await addRecipeToJSON(newRecipe);
             alert('Recipe added successfully!');
             window.location.href = `recipe-detail.html?id=${savedRecipe.id}`;
         } catch (error) {
             console.error('Error saving recipe:', error);
-            alert('Failed to save recipe. Please try again.');
+            alert(`Failed to save recipe: ${error.message}`);
         }
     });
 
     // Modified recipe loading function
     async function loadRecipes() {
         try {
-            const response = await fetch('http://localhost:3000/api/recipes');
+            const response = await fetch('../Json/recipes.json');
             const data = await response.json();
             return data.recipes;
         } catch (error) {

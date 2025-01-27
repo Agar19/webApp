@@ -1,26 +1,18 @@
-// recipe-loader.js
 class RecipeManager {
     constructor() {
         this.recipes = [];
         this.initialized = false;
     }
 
-    // Load recipes once and store them
+    // Load recipes from the recipes.json file
     async initialize() {
         if (this.initialized) return;
 
         try {
-            // Check localStorage first
-            const storedRecipes = localStorage.getItem('recipes');
-            if (storedRecipes) {
-                this.recipes = JSON.parse(storedRecipes).recipes;
-            } else {
-                // Fetch from API if not in localStorage
-                const response = await fetch('/api/recipes');
-                const data = await response.json();
-                this.recipes = data.recipes;
-                localStorage.setItem('recipes', JSON.stringify(data));
-            }
+            // Fetch recipes from the recipes.json file
+            const response = await fetch('../Json/recipes.json'); 
+            const data = await response.json();
+            this.recipes = data.recipes;
             this.initialized = true;
         } catch (error) {
             console.error('Error loading recipes:', error);
@@ -38,16 +30,16 @@ class RecipeManager {
         return this.recipes.find(recipe => recipe.id === id);
     }
 
-    // Display recipes in slider containers
-    displayInSliders() {
-        const sliderContainers = document.querySelectorAll('.slider-container');
+    // Display recipes in containers
+    displayInContainer() {
+        const recipeContainers = document.querySelectorAll('.recipe-container');
         
-        if (sliderContainers.length) {
-            sliderContainers.forEach((container, index) => {
+        if (recipeContainers.length) {
+            recipeContainers.forEach((container, index) => {
                 container.innerHTML = ''; // Clear existing content
                 
                 // Slice recipes based on the section 
-                const sectionRecipes = this.recipes.slice(index * 3, (index + 1) * 3);
+                const sectionRecipes = this.recipes.slice(index * 6, (index + 1) * 6);
                 
                 sectionRecipes.forEach(recipe => {
                     const articleElement = document.createElement('article');
@@ -69,7 +61,7 @@ class RecipeManager {
                     `;
                     
                     articleElement.addEventListener('click', () => {
-                        router.route({ target: { getAttribute: () => `/recipe/${recipe.id}` } });
+                        window.location.href = `recipe-detail.html?id=${recipe.id}`;
                     });
                     
                     container.appendChild(articleElement);
@@ -77,24 +69,69 @@ class RecipeManager {
             });
         }
     }
+}
+async function displayRecipeDetails() {
+    const recipeDetailContainer = document.querySelector('.recipe-detail');
+    if (recipeDetailContainer) {
+        // Get recipe ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipeId = parseInt(urlParams.get('id'));
 
-    // Display recipe details
-    displayRecipeDetails() {
-        const recipeDetailContainer = document.querySelector('.recipe-detail');
-        if (!recipeDetailContainer) return;
+        try {
+            // Fetch recipes from JSON
+            const response = await fetch('../Json/recipes.json');
+            const data = await response.json();
+            const recipe = data.recipes.find(r => r.id === recipeId);
 
-        const pathParts = window.location.pathname.split('/');
-        const recipeId = parseInt(pathParts[pathParts.length - 1]);
-        const recipe = this.getRecipeById(recipeId);
+            if (recipe) {
+                // Update hero section
+                recipeDetailContainer.querySelector('.recipe-hero img').src = recipe.image;
+                recipeDetailContainer.querySelector('.recipe-hero h1').textContent = recipe.name;
+                
+                // Update meta information
+                const metaElements = recipeDetailContainer.querySelectorAll('.recipe-meta span');
+                metaElements[0].textContent = `⏰ ${recipe.cookingTime}`;
+                metaElements[1].textContent = `🔥 ${recipe.difficulty}`;
+                metaElements[2].textContent = `🍽️ ${recipe.calories} Cal`;
 
-        if (recipe) {
-            // Your existing recipe detail display code...
-            recipeDetailContainer.querySelector('.recipe-hero img').src = recipe.image;
-            recipeDetailContainer.querySelector('.recipe-hero h1').textContent = recipe.name;
-            // ... rest of your detail display code
+                // Update review section
+                const starsElement = recipeDetailContainer.querySelector('.recipe-review .stars');
+                const reviewCountElement = recipeDetailContainer.querySelector('.recipe-review .review-count');
+                starsElement.textContent = '★'.repeat(recipe.rating) + '☆'.repeat(5 - recipe.rating);
+                reviewCountElement.textContent = `(${recipe.reviewCount} reviews)`;
+
+                // Update description
+                const descriptionElement = recipeDetailContainer.querySelector('.recipe-hero-details p');
+                descriptionElement.textContent = recipe.description;
+
+                // Populate ingredients
+                const ingredientsList = recipeDetailContainer.querySelector('.ingredients ul');
+                ingredientsList.innerHTML = recipe.ingredients.map(ing => `<li>${ing}</li>`).join('');
+
+                // Populate instructions
+                const instructionsList = recipeDetailContainer.querySelector('.instructions ol');
+                instructionsList.innerHTML = recipe.instructions.map(inst => `<li>${inst}</li>`).join('');
+
+                // Populate comments
+                const commentsSection = recipeDetailContainer.querySelector('.comments');
+                const commentsContainer = commentsSection.querySelector('.comment-list');
+                commentsContainer.innerHTML = recipe.comments.map(comment => `
+                    <div class="comment">
+                        <strong>${comment.user}</strong>
+                        <p>${comment.text}</p>
+                    </div>
+                `).join('');
+            } else {
+                console.error('Recipe not found');
+            }
+        } catch (error) {
+            console.error('Error loading recipe details:', error);
         }
     }
 }
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', displayRecipeDetails);
 
 // Create a global instance
 window.recipeManager = new RecipeManager();
@@ -105,11 +142,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await window.recipeManager.initialize();
 
     // Handle different page displays
-    if (document.querySelector('.slider-container')) {
-        window.recipeManager.displayInSliders();
-    }
-
-    if (document.querySelector('.recipe-detail')) {
-        window.recipeManager.displayRecipeDetails();
+    if (document.querySelector('.recipe-container')) {
+        window.recipeManager.displayInContainer();
     }
 });

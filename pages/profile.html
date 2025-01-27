@@ -6,24 +6,24 @@
     <title>Profile - FoodCraft</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../Css/profileStyles.css">
+    <link rel="stylesheet" href="../Css/headerFooter.css">
 </head>
 <body>
     <header>
         <img src="../images/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
         <nav>
             <ul>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="all-recipes.html">Recipes</a></li>
-                <li><a href="add-recipe.html">Add recipe</a></li>
-                <li><a href="CalorieCount.html">Calorie count</a></li>
-                <li><a href="About.html">About</a></li>
+                <li><a href="profile.html">Нүүр</a></li>
+                <li><a href="all-recipes.html">Бүх жорнууд</a></li>
+                <li><a href="add-recipe.html">Жор нэмэх</a></li>
+                <li><a href="CalorieCount.html">Калор тооцох</a></li>
+                <li><a href="about.html">Бидний тухай</a></li>
             </ul>
         </nav>
         <form class="search-form">
             <input type="search" placeholder="Search recipes...">
-            <button type="submit">Search</button>
         </form>
-        <a href="login.html" class="sign-up">Sign Up/Log In</a>
+        <a href="login.html" class="sign-up">login</a>
     </header>
     
     <main>
@@ -42,23 +42,19 @@
 
         <section class="recipes">
             <h2>Favorite Recipes</h2>
-            <div class="recipe-grid">
-                <div class="slider-container">
-                    <!-- Recipe content will be loaded dynamically -->
-                </div>
-                <div class="slider-container">
-                    <!-- Recipe content will be loaded dynamically -->
-                </div>
-                <div class="slider-container">
-                    <!-- Recipe content will be loaded dynamically -->
-                </div>
-                <div class="slider-container">
-                    <!-- Recipe content will be loaded dynamically -->
-                </div>
+            <div class="favorites-container recipe-grid">
+                <!-- Favorite recipes will be dynamically loaded here -->
             </div>
         </section>
     </main>
 
     <script src="../JS/recipe-loader.js"></script>
+    <script>
+        // Ensure favorites are loaded when profile page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            displayFavoriteRecipes();
+        });
+    </script>
+    <script src="../JS/menuButton.js"></script>
 </body>
 </html>

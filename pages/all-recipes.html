@@ -6,30 +6,30 @@
     <title>Recipes | FoodCraft</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
     <link rel="stylesheet" href="../Css/all-recipes.css">
+    <link rel="stylesheet" href="../Css/headerFooter.css">
 </head>
 <body>
     <header>
         <img src="../images/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
         <nav>
             <ul>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="all-recipes.html">Recipes</a></li>
-                <li><a href="add-recipe.html">Add recipe</a></li>
-                <li><a href="CalorieCount.html">Calorie count</a></li>
-                <li><a href="About.html">About</a></li>
+                <li><a href="profile.html">Нүүр</a></li>
+                <li><a href="all-recipes.html">Бүх жорнууд</a></li>
+                <li><a href="add-recipe.html">Жор нэмэх</a></li>
+                <li><a href="CalorieCount.html">Калор тооцох</a></li>
+                <li><a href="about.html">Бидний тухай</a></li>
             </ul>
         </nav>
         <form role="search" class="search-form">
             <input type="search" placeholder="Search recipes..." aria-label="Search recipes">
-            <button type="submit">Search</button>
         </form>
-        <a href="login.html" class="sign-up">Sign Up/Log In</a>
+        <a href="login.html" class="sign-up">login</a>
     </header>
 
     <main>
         <section class="recipes-filters">
-            <div class="filter-container">
-                <div class="category-filter">
+            <section class="filter-container">
+                <section class="category-filter">
                     <label for="category-select">Category:</label>
                     <select id="category-select">
                         <option value="">All Categories</option>
@@ -40,9 +40,9 @@
                         <option value="vegetarian">Vegetarian</option>
                         <option value="vegan">Vegan</option>
                     </select>
-                </div>
+                </section>
 
-                <div class="sort-filter">
+                <section class="sort-filter">
                     <label for="sort-select">Sort By:</label>
                     <select id="sort-select">
                         <option value="newest">Newest</option>
@@ -51,199 +51,207 @@
                         <option value="difficulty-hard">Most Challenging</option>
                         <option value="prep-time">Shortest Prep Time</option>
                     </select>
-                </div>
+                </section>
 
-                <div class="difficulty-filter">
+                <section class="difficulty-filter">
                     <label>Difficulty:</label>
-                    <div class="difficulty-options">
+                    <section class="difficulty-options">
                         <input type="checkbox" id="easy" name="difficulty" value="easy">
                         <label for="easy">Easy</label>
                         <input type="checkbox" id="medium" name="difficulty" value="medium">
                         <label for="medium">Medium</label>
                         <input type="checkbox" id="hard" name="difficulty" value="hard">
                         <label for="hard">Hard</label>
-                    </div>
-                </div>
-            </div>
+                    </section>
+                </section>
+            </section>
         </section>
 
         <section class="recipes-grid">
-            <div class="recipes-container">
-                <!-- Dynamic recipe-->
-            </div>
-            <div class="pagination">
+            <section class="recipes-container">
+                <!-- Dynamic recipe -->
+            </section>
+            <section class="pagination">
                 <button class="prev-page">Previous</button>
                 <span class="page-number">Page 1 of 5</span>
                 <button class="next-page">Next</button>
-            </div>
+            </section>
         </section>
     </main>
 
     <footer>
         <article class="FooterElement">
-            <h3>About FoodCraft</h3>
-            <p>Discover delicious recipes, cooking tips, and culinary inspiration. FoodCraft is your ultimate destination for food lovers and home chefs.</p>
+            <h3>FoodCraft</h3>
+            <p>Олон нийтэд нээлттэй хоолны жорны вэб сайт. Та өөрийн жорыг бусадтай хуваалцаарай.</p>
         </article>
         <article class="FooterElement">
-            <h3>Connect With Us</h3>
-            <p>Follow us on social media to stay updated with the latest recipes, cooking challenges, and foodie adventures.</p>
+            <h3>Бидэнтэй холбогдох</h3>
+            <p>Утас: 88154368,<br>
+                Facebook: FoodCraft
+            </p>
         </article>
         <article class="FooterElement">
-            <h3>Newsletter</h3>
-            <p>Subscribe to our newsletter and get the best recipes, cooking tips, and exclusive content delivered straight to your inbox.</p>
+            <h3>Мэдээ мэдээлэл</h3>
+            <p>Хоолны тухай мэдээлэл</p>
         </article>
     </footer>
-    
 
-    <script src="../JS/recipe-loader.js"></script>
+    
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Function to load recipes from JSON
-        async function loadRecipes() {
-            try {
-                const response = await fetch('../Json/recipes.json');
-                const data = await response.json();
-                return data.recipes;
-            } catch (error) {
-                console.error('Error loading recipes:', error);
-                return [];
-            }
+    // Function to load recipes from JSON
+    async function loadRecipes() {
+        try {
+            const response = await fetch('../Json/recipes.json');
+            const data = await response.json();
+            return data.recipes;
+        } catch (error) {
+            console.error('Error loading recipes:', error);
+            return [];
+        }
+    }
+
+    // Function to display recipes on the all recipes page
+    async function displayAllRecipes() {
+        const recipesContainer = document.querySelector('.recipes-container');
+        const pageNumberSpan = document.querySelector('.page-number');
+        const prevButton = document.querySelector('.prev-page');
+        const nextButton = document.querySelector('.next-page');
+
+        const recipes = await loadRecipes();
+        const recipesPerPage = 20;
+        let currentPage = 1;
+        let filteredRecipes = [...recipes];
+
+        function displayRecipesForPage(page) {
+            const startIndex = (page - 1) * recipesPerPage;
+            const endIndex = startIndex + recipesPerPage;
+            const pageRecipes = filteredRecipes.slice(startIndex, endIndex);
+
+            recipesContainer.innerHTML = ''; // Clear existing content
+
+            pageRecipes.forEach(recipe => {
+                const articleElement = document.createElement('article');
+                articleElement.classList.add('recipe-card');
+                articleElement.innerHTML = `
+                    <img src="${recipe.image}" alt="${recipe.name}" loading="lazy">
+                    <section class="recipe-details">
+                        <h3>${recipe.name}</h3>
+                        <section class="recipe-meta">
+                            <span class="cooking-time">⏰ ${recipe.cookingTime}</span>
+                            <span class="difficulty">🔥 ${recipe.difficulty}</span>
+                            <span class="calories">🍽️ ${recipe.calories} Cal</span>
+                        </section>
+                        <section class="recipe-review">
+                            <section class="stars">${'★'.repeat(Math.floor(recipe.rating))}${'☆'.repeat(5 - Math.floor(recipe.rating))}</section>
+                            <span class="review-count">(${recipe.reviewCount} reviews)</span>
+                        </section>
+                    </section>
+                `;
+
+                // Add click event to navigate to recipe detail
+                articleElement.addEventListener('click', () => {
+                    window.location.href = `recipe-detail.html?id=${recipe.id}`;
+                });
+
+                recipesContainer.appendChild(articleElement);
+            });
+
+            // Update pagination
+            const totalPages = Math.ceil(filteredRecipes.length / recipesPerPage);
+            pageNumberSpan.textContent = `Page ${page} of ${totalPages}`;
+
+            // Enable/disable pagination buttons
+            prevButton.disabled = page === 1;
+            nextButton.disabled = page === totalPages;
         }
 
-        // Function to display recipes on the all recipes page
-        async function displayAllRecipes() {
-            const recipesContainer = document.querySelector('.recipes-container');
-            const pageNumberSpan = document.querySelector('.page-number');
-            const prevButton = document.querySelector('.prev-page');
-            const nextButton = document.querySelector('.next-page');
+        // Filtering and sorting function
+        function applyFilters() {
+            const selectedCategory = categorySelect.value.toLowerCase();
+            const selectedSort = sortSelect.value;
+            const selectedDifficulties = Array.from(difficultyCheckboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value.toLowerCase());
 
-            const recipes = await loadRecipes();
-            const recipesPerPage = 6; // Adjust as needed
-            let currentPage = 1;
+            // Filter recipes
+            filteredRecipes = recipes.filter(recipe => {
+                const categoryMatch = !selectedCategory || 
+                    recipe.MealType.some(type => type.toLowerCase() === selectedCategory) ||
+                    recipe.category?.toLowerCase() === selectedCategory;
+                
+                const difficultyMatch = selectedDifficulties.length === 0 || 
+                    selectedDifficulties.includes(recipe.difficulty.toLowerCase());
+                
+                return categoryMatch && difficultyMatch;
+            });
 
-            function displayRecipesForPage(page) {
-                const startIndex = (page - 1) * recipesPerPage;
-                const endIndex = startIndex + recipesPerPage;
-                const pageRecipes = recipes.slice(startIndex, endIndex);
-
-                recipesContainer.innerHTML = ''; // Clear existing content
-
-                pageRecipes.forEach(recipe => {
-                    const articleElement = document.createElement('article');
-                    articleElement.classList.add('recipe-card');
-                    articleElement.innerHTML = `
-                        <img src="${recipe.image}" alt="${recipe.name}" loading="lazy">
-                        <div class="recipe-details">
-                            <h3>${recipe.name}</h3>
-                            <div class="recipe-meta">
-                                <span class="cooking-time">⏰ ${recipe.cookingTime}</span>
-                                <span class="difficulty">🔥 ${recipe.difficulty}</span>
-                                <span class="calories">🍽️ ${recipe.calories} Cal</span>
-                            </div>
-                            <div class="recipe-review">
-                                <div class="stars">${'★'.repeat(recipe.rating)}${'☆'.repeat(5 - recipe.rating)}</div>
-                                <span class="review-count">(${recipe.reviewCount} reviews)</span>
-                            </div>
-                        </div>
-                    `;
-                    
-                    // Add click event to navigate to recipe detail
-                    articleElement.addEventListener('click', () => {
-                        window.location.href = `recipe-detail.html?id=${recipe.id}`;
+            // Sorting
+            switch (selectedSort) {
+                case 'newest':
+                    filteredRecipes.sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0));
+                    break;
+                case 'rating':
+                    filteredRecipes.sort((a, b) => b.rating - a.rating);
+                    break;
+                case 'difficulty-easy':
+                    filteredRecipes = filteredRecipes.filter(r => r.difficulty.toLowerCase() === 'easy');
+                    break;
+                case 'difficulty-hard':
+                    filteredRecipes = filteredRecipes.filter(r => r.difficulty.toLowerCase() === 'hard');
+                    break;
+                case 'prep-time':
+                    filteredRecipes.sort((a, b) => {
+                        const parseTime = (timeStr) => {
+                            const [num] = timeStr.split(' ');
+                            return parseFloat(num);
+                        };
+                        return parseTime(a.cookingTime) - parseTime(b.cookingTime);
                     });
-                    
-                    recipesContainer.appendChild(articleElement);
-                });
-
-                // Update pagination
-                const totalPages = Math.ceil(recipes.length / recipesPerPage);
-                pageNumberSpan.textContent = `Page ${page} of ${totalPages}`;
-
-                // Enable/disable pagination buttons
-                prevButton.disabled = page === 1;
-                nextButton.disabled = page === totalPages;
+                    break;
             }
 
-            // Initial display
+            // Reset to first page of filtered results
+            currentPage = 1;
             displayRecipesForPage(currentPage);
+        }
 
-            // Pagination event listeners
-            prevButton.addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    displayRecipesForPage(currentPage);
-                }
-            });
-
-            nextButton.addEventListener('click', () => {
-                const totalPages = Math.ceil(recipes.length / recipesPerPage);
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    displayRecipesForPage(currentPage);
-                }
-            });
-
-            // Filtering and sorting
-            const categorySelect = document.getElementById('category-select');
-            const sortSelect = document.getElementById('sort-select');
-            const difficultyCheckboxes = document.querySelectorAll('input[name="difficulty"]');
-
-            function applyFilters() {
-                const selectedCategory = categorySelect.value;
-                const selectedSort = sortSelect.value;
-                const selectedDifficulties = Array.from(difficultyCheckboxes)
-                    .filter(checkbox => checkbox.checked)
-                    .map(checkbox => checkbox.value);
-
-                let filteredRecipes = recipes.filter(recipe => {
-                    const categoryMatch = !selectedCategory || recipe.category.toLowerCase() === selectedCategory;
-                    const difficultyMatch = selectedDifficulties.length === 0 || 
-                        selectedDifficulties.includes(recipe.difficulty.toLowerCase());
-                    return categoryMatch && difficultyMatch;
-                });
-
-                // Sorting
-                switch (selectedSort) {
-                    case 'newest':
-                        filteredRecipes.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
-                        break;
-                    case 'rating':
-                        filteredRecipes.sort((a, b) => b.rating - a.rating);
-                        break;
-                    case 'difficulty-easy':
-                        filteredRecipes = filteredRecipes.filter(r => r.difficulty.toLowerCase() === 'easy');
-                        break;
-                    case 'difficulty-hard':
-                        filteredRecipes = filteredRecipes.filter(r => r.difficulty.toLowerCase() === 'hard');
-                        break;
-                    case 'prep-time':
-                        filteredRecipes.sort((a, b) => {
-                            const parseTime = (timeStr) => {
-                                const [num, unit] = timeStr.split(' ');
-                                return parseInt(num);
-                            };
-                            return parseTime(a.cookingTime) - parseTime(b.cookingTime);
-                        });
-                        break;
-                }
-
-                // Reset to first page of filtered results
-                currentPage = 1;
+        // Pagination event listeners
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
                 displayRecipesForPage(currentPage);
             }
+        });
 
-            // Add event listeners for filters
-            categorySelect.addEventListener('change', applyFilters);
-            sortSelect.addEventListener('change', applyFilters);
-            difficultyCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', applyFilters);
-            });
-        }
+        nextButton.addEventListener('click', () => {
+            const totalPages = Math.ceil(filteredRecipes.length / recipesPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayRecipesForPage(currentPage);
+            }
+        });
 
-        // Run the display function
-        displayAllRecipes();
-    });
+        // Get filter elements
+        const categorySelect = document.getElementById('category-select');
+        const sortSelect = document.getElementById('sort-select');
+        const difficultyCheckboxes = document.querySelectorAll('input[name="difficulty"]');
+
+        // Add event listeners for filters
+        categorySelect.addEventListener('change', applyFilters);
+        sortSelect.addEventListener('change', applyFilters);
+        difficultyCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', applyFilters);
+        });
+
+        // Initial display
+        displayRecipesForPage(currentPage);
+    }
+
+    // Run the display function
+    displayAllRecipes();
+});
     </script>
-
+    <script src="../JS/menuButton.js"></script>
 </body>
 </html>

@@ -1,11 +1,13 @@
 {
-  "name": "web_app",
+  "name": "web-biy-daalt",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000w\u0000e\u0000b\u0000A\u0000p\u0000p\u0000\r\u0000 \u0000",
-  "main": "webServer.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {

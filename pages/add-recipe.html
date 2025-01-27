@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Recipe - FoodCraft</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
-    <link rel="stylesheet" href="../Css/mainPageStyles.css">
+    <link rel="stylesheet" href="../Css/headerFooter.css">
     <style>
         .add-recipe-form {
             max-width: 800px;
@@ -51,6 +51,18 @@
             width: 100%;
             margin-top: 1rem;
         }
+        .checkbox-group {
+            margin-bottom: 1rem;
+        }
+        .checkbox-group label {
+            display: inline-block;
+            margin-right: 1rem;
+            font-weight: normal;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -58,18 +70,17 @@
         <img src="../images/RatLogo-removebg-preview.png" alt="FoodCraft Logo" class="logo" onclick="window.location.href='mainPage.html'">
         <nav>
             <ul>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="all-recipes.html">Recipes</a></li>
-                <li><a href="add-recipe.html">Add recipe</a></li>
-                <li><a href="CalorieCount.html">Calorie count</a></li>
-                <li><a href="About.html">About</a></li>
+                <li><a href="profile.html">Нүүр</a></li>
+                <li><a href="all-recipes.html">Бүх жорнууд</a></li>
+                <li><a href="add-recipe.html">Жор нэмэх</a></li>
+                <li><a href="CalorieCount.html">Калор тооцох</a></li>
+                <li><a href="about.html">Бидний тухай</a></li>
             </ul>
         </nav>
         <form role="search" class="search-form">
             <input type="search" placeholder="Search recipes..." aria-label="Search recipes">
-            <button type="submit">Search</button>
         </form>
-        <a href="login.html" class="sign-up">Sign Up/Log In</a>
+        <a href="login.html" class="sign-up">login</a>
     </header>
 
     <main>
@@ -96,15 +107,37 @@
             <label for="calories">Calories</label>
             <input type="number" id="calories" required>
 
-            <label for="rating">Rating</label>
-            <select id="rating" required>
-                <option value="">Select Rating</option>
-                <option value="1">1 Star</option>
-                <option value="2">2 Stars</option>
-                <option value="3">3 Stars</option>
-                <option value="4">4 Stars</option>
-                <option value="5">5 Stars</option>
-            </select>
+            <label>Meal Type</label>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="mealType" value="Breakfast"> Breakfast
+                </label>
+                <label>
+                    <input type="checkbox" name="mealType" value="Lunch"> Lunch
+                </label>
+                <label>
+                    <input type="checkbox" name="mealType" value="Dinner"> Dinner
+                </label>
+                <label>
+                    <input type="checkbox" name="mealType" value="Dessert"> Dessert
+                </label>
+            </div>
+
+            <label>Dietary Category</label>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="dietary" value="IsMeat"> Contains Meat
+                </label>
+                <label>
+                    <input type="checkbox" name="dietary" value="IsVegan"> Vegan
+                </label>
+                <label>
+                    <input type="checkbox" name="dietary" value="IsVegetarian"> Vegetarian
+                </label>
+                <label>
+                    <input type="checkbox" name="dietary" value="IsDessert"> Dessert
+                </label>
+            </div>
 
             <label>Ingredients</label>
             <div id="ingredientsContainer">
@@ -131,19 +164,22 @@
 
     <footer>
         <article class="FooterElement">
-            <h3>About FoodCraft</h3>
-            <p>Discover delicious recipes, cooking tips, and culinary inspiration. FoodCraft is your ultimate destination for food lovers and home chefs.</p>
+            <h3>FoodCraft</h3>
+            <p>Олон нийтэд нээлттэй хоолны жорны вэб сайт. Та өөрийн жорыг бусадтай хуваалцаарай.</p>
         </article>
         <article class="FooterElement">
-            <h3>Connect With Us</h3>
-            <p>Follow us on social media to stay updated with the latest recipes, cooking challenges, and foodie adventures.</p>
+            <h3>Бидэнтэй холбогдох</h3>
+            <p>Утас: 88154368,
+                facebook: FoodCraft
+            </p>
         </article>
         <article class="FooterElement">
-            <h3>Newsletter</h3>
-            <p>Subscribe to our newsletter and get the best recipes, cooking tips, and exclusive content delivered straight to your inbox.</p>
+            <h3>Мэдээ мэдээлэл</h3>
+            <p>Хоолны тухай мэдээлэл</p>
         </article>
     </footer>
 
     <script src="../JS/add-recipe.js"></script>
+    <script src="../JS/menuButton.js"></script>
 </body>
 </html>

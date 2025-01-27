@@ -4,12 +4,16 @@
             "id": 1,
             "name": "Chicken Tikka Masala",
             "image": "../images/chickenTikka.jpg",
-            "cookingTime": "1 hr",
+            "cookingTime": "60 mins",
             "difficulty": "Medium", 
             "calories": 400,
             "rating": 4,
             "reviewCount": 210,
             "description": "A classic Indian-inspired dish with tender chicken in a creamy, spiced tomato sauce. Perfect served with rice or naan bread.",
+            "IsMeat": true,
+            "IsVegan": false,
+            "IsDessert": false,
+            "MealType": ["Dinner"],
             "ingredients": [
                 "1.5 lbs boneless, skinless chicken breasts",
                 "1 cup plain yogurt",
@@ -53,12 +57,16 @@
             "id": 2,
             "name": "Beef Bourguignon",
             "image": "../images/beefbourg.jpg",
-            "cookingTime": "2.5 hrs",
+            "cookingTime": "120 mins",
             "difficulty": "Hard",
             "calories": 450,
             "rating": 5,
             "reviewCount": 89,
             "description": "A rich and hearty French classic beef stew, slow-cooked to perfection with red wine, bacon, and herbs.",
+            "IsMeat": true,
+            "IsVegan": false,
+            "IsDessert": false,
+            "MealType": ["Dinner"],
             "ingredients": [
                 "2 lbs beef chuck, cut into cubes",
                 "1/2 lb bacon, diced",
@@ -106,6 +114,10 @@
             "rating": 4,
             "reviewCount": 176,
             "description": "A creamy Italian pasta dish with eggs, hard cheese, cured pork, and black pepper.",
+            "IsMeat": true,
+            "IsVegan": false,
+            "IsDessert": false,
+            "MealType": ["Dinner"],
             "ingredients": [
                 "1 lb spaghetti",
                 "4 large eggs",
@@ -136,6 +148,225 @@
                     "user": "Lisa R.",
                     "text": "Quick and delicious weeknight dinner."
                 }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Pepperoni Pizza",
+            "image": "../images/pepperoniPizza.jpg",
+            "cookingTime": "45 mins",
+            "difficulty": "Easy",
+            "calories": 300,
+            "rating": 4,
+            "reviewCount": 120,
+            "description": "A classic pepperoni pizza with a crispy crust and melty cheese.",
+            "IsMeat": true,
+            "IsVegan": false,
+            "IsDessert": false,
+            "MealType": ["Dinner", "Lunch"],
+            "ingredients": [
+                "1 pizza dough",
+                "1/2 cup pizza sauce",
+                "1.5 cups shredded mozzarella",
+                "1/2 cup sliced pepperoni",
+                "1 tsp dried oregano",
+                "1 tsp olive oil"
+            ],
+            "instructions": [
+                "Preheat oven to 475°F (245°C).",
+                "Spread sauce evenly over pizza dough.",
+                "Top with cheese, pepperoni, and oregano.",
+                "Drizzle olive oil around the edges.",
+                "Bake for 10-15 minutes or until crust is golden brown."
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Margherita Pizza",
+            "image": "../images/Margherita-Pizza.jpg",
+            "cookingTime": "40 mins",
+            "difficulty": "Easy",
+            "calories": 280,
+            "rating": 4.5,
+            "reviewCount": 95,
+            "description": "A simple yet delicious pizza with fresh basil, mozzarella, and tomatoes.",
+            "IsMeat": true,
+            "IsVegan": false,
+            "IsDessert": false,
+            "MealType": ["Dinner", "Lunch"],
+            "ingredients": [
+                "1 pizza dough",
+                "1/2 cup pizza sauce",
+                "Fresh mozzarella, sliced",
+                "2 fresh tomatoes, sliced",
+                "Fresh basil leaves",
+                "1 tsp olive oil",
+                "Salt to taste"
+            ],
+            "instructions": [
+                "Preheat oven to 475°F (245°C).",
+                "Spread pizza sauce on dough.",
+                "Add sliced mozzarella and tomatoes.",
+                "Bake for 12-15 minutes.",
+                "Garnish with fresh basil leaves and olive oil."
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Soup Dumplings",
+            "image": "../images/soupDumplings.jpg",
+            "cookingTime": "90 mins",
+            "difficulty": "Hard",
+            "calories": 250,
+            "rating": 5,
+            "reviewCount": 65,
+            "description": "Delicate dumplings filled with savory soup and meat.",
+            "IsMeat": true,
+            "IsVegan": false,
+            "IsDessert": false,
+            "MealType": ["Dinner"],
+            "ingredients": [
+                "2 cups all-purpose flour",
+                "1/2 lb ground pork",
+                "1/4 cup chicken broth gelatin",
+                "2 tbsp soy sauce",
+                "1 tbsp sesame oil",
+                "1 tbsp ginger, minced",
+                "1 garlic clove, minced",
+                "Salt and pepper to taste"
+            ],
+            "instructions": [
+                "Prepare dough by mixing flour and water.",
+                "Combine pork filling with seasonings.",
+                "Roll out dough and cut into circles.",
+                "Fill with pork mixture and soup gelatin.",
+                "Steam dumplings for 10 minutes and serve."
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Chocolate Chip Cookies",
+            "image": "../images/chocolateChipCookies.jpg",
+            "cookingTime": "30 mins",
+            "difficulty": "Easy",
+            "calories": 150,
+            "rating": 5,
+            "reviewCount": 320,
+            "description": "Classic chewy chocolate chip cookies.",
+            "IsMeat": false,
+            "IsVegan": false,
+            "IsDessert": true,
+            "MealType": ["Dessert"],
+            "ingredients": [
+                "1 cup butter, softened",
+                "1 cup sugar",
+                "1 cup brown sugar",
+                "2 large eggs",
+                "1 tsp vanilla extract",
+                "2.5 cups all-purpose flour",
+                "1 tsp baking soda",
+                "1/2 tsp salt",
+                "2 cups chocolate chips"
+            ],
+            "instructions": [
+                "Preheat oven to 375°F (190°C).",
+                "Cream butter and sugars.",
+                "Add eggs and vanilla, mix well.",
+                "Mix dry ingredients separately.",
+                "Combine wet and dry ingredients, fold in chocolate chips.",
+                "Drop spoonfuls onto baking sheet.",
+                "Bake for 8-10 minutes."
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Vanilla Ice Cream",
+            "image": "../images/vanillaIceCream.jpg",
+            "cookingTime": "180 mins",
+            "difficulty": "Medium",
+            "calories": 200,
+            "rating": 5,
+            "reviewCount": 190,
+            "description": "Creamy homemade vanilla ice cream.",
+            "IsMeat": false,
+            "IsVegan": false,
+            "IsDessert": true,
+            "MealType": ["Dessert"],
+            "ingredients": [
+                "2 cups heavy cream",
+                "1 cup whole milk",
+                "3/4 cup sugar",
+                "1 vanilla bean, split",
+                "4 large egg yolks"
+            ],
+            "instructions": [
+                "Heat milk, cream, and sugar until dissolved.",
+                "Whisk yolks, temper with warm mixture.",
+                "Cook custard until thickened.",
+                "Chill and churn in an ice cream maker."
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Vegan Buddha Bowl",
+            "image": "../images/veganBuddhaBowl.jpg",
+            "cookingTime": "40 mins",
+            "difficulty": "Easy",
+            "calories": 350,
+            "rating": 4.5,
+            "reviewCount": 85,
+            "description": "A colorful bowl filled with roasted veggies, grains, and a tahini dressing.",
+            "IsMeat": false,
+            "IsVegan": true,
+            "IsDessert": false,
+            "MealType": ["Dinner", "Lunch"],
+            "ingredients": [
+                "1 cup quinoa",
+                "1 sweet potato, diced",
+                "1 cup chickpeas",
+                "1 cup kale, chopped",
+                "2 tbsp olive oil",
+                "1 tbsp tahini",
+                "1 tbsp lemon juice",
+                "Salt and pepper to taste"
+            ],
+            "instructions": [
+                "Cook quinoa and set aside.",
+                "Roast sweet potatoes and chickpeas.",
+                "Prepare tahini dressing.",
+                "Assemble ingredients in a bowl."
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Vegan Lentil Soup",
+            "image": "../images/veganLentilSoup.jpg",
+            "cookingTime": "60 mins",
+            "difficulty": "Easy",
+            "calories": 240,
+            "rating": 4.8,
+            "reviewCount": 120,
+            "description": "Hearty and nutritious lentil soup packed with veggies.",
+            "IsMeat": false,
+            "IsVegan": true,
+            "IsDessert": false,
+            "MealType": ["Dinner", "Lunch"],
+            "ingredients": [
+                "1 cup lentils",
+                "1 onion, chopped",
+                "2 carrots, diced",
+                "2 celery stalks, chopped",
+                "1 can (14 oz) diced tomatoes",
+                "4 cups vegetable broth",
+                "1 tsp cumin",
+                "1 tsp paprika",
+                "Salt and pepper to taste"
+            ],
+            "instructions": [
+                "Sauté onions, carrots, and celery.",
+                "Add lentils, tomatoes, and broth.",
+                "Season with spices and simmer.",
+                "Serve with crusty bread."
             ]
         }
     ]
