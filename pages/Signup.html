@@ -102,21 +102,20 @@
 
     <section class="container">
         <div class="image-section">
-            <img src="rataatt.webp" alt="Image with Spoon">
+            <img src="../images/rataatt.webp" alt="Image with Spoon">
         </div>
         <div class="form-section">
             <h2>Create Account</h2>
-            <form action="#" method="post">
-                <input type="text" placeholder="First Name" required>
-                <input type="text" placeholder="Last Name" required>
-                <input type="email" placeholder="Username or Email" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Enter Password again" required>
-                <button type="submit">Create Account</button>
+            <form action="#" method="post" id="signup-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <input type="password" id="signup-password-confirm" placeholder="Enter Password again" required>
+                <button type="submit">Бүртгүүлэх</button>
             </form>
             <p>Already have an account? <a href="#">Login</a></p>
         </div>
     </section>
-
+    <script src="../signUp.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@ class RecipeManager {
 
         try {
             // Fetch recipes from the recipes.json file
-            const response = await fetch('../Json/recipes.json'); 
+            const response = await fetch('/Json/recipes.json'); 
             const data = await response.json();
             this.recipes = data.recipes;
             this.initialized = true;
@@ -61,7 +61,7 @@ class RecipeManager {
                     `;
                     
                     articleElement.addEventListener('click', () => {
-                        window.location.href = `recipe-detail.html?id=${recipe.id}`;
+                        window.location.href = `../pages/recipe-detail?id=${recipe.id}`;
                     });
                     
                     container.appendChild(articleElement);
