@@ -152,6 +152,33 @@ app.get('/Json/:fileName', async (req, res) => {
     }
 });
 
+//search login nemev
+app.get('/search', async (req, res) => {
+    try {
+        const query = req.query.q.toLowerCase().trim();
+        const recipesPath = path.join(__dirname, 'Json', 'recipes.json');
+        
+        // Read recipes file
+        const recipesContent = await fs.readFile(recipesPath, 'utf8');
+        const recipesData = JSON.parse(recipesContent);
+        
+        // Search logic
+        const searchResults = recipesData.recipes.filter(recipe => 
+            recipe.name.toLowerCase().includes(query) || 
+            recipe.description.toLowerCase().includes(query) ||
+            recipe.ingredients.some(ingredient => 
+                ingredient.toLowerCase().includes(query)
+            )
+        );
+        
+        res.json(searchResults);
+    } catch (error) {
+        console.error('Search error:', error);
+        res.status(500).json({ error: 'Search failed', details: error.message });
+    }
+});
+
+
 app.get('/', (req, res) => {
     res.redirect('/pages/mainPage');
 });
