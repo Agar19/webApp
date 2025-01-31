@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         ingredientsContainer.appendChild(ingredientSection);
 
-        // Remove ingredient section
         ingredientSection.querySelector('.btn-remove').addEventListener('click', () => {
             ingredientsContainer.removeChild(ingredientSection);
         });
@@ -31,50 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         instructionsContainer.appendChild(instructionSection);
 
-        // Remove instruction section
         instructionSection.querySelector('.btn-remove').addEventListener('click', () => {
             instructionsContainer.removeChild(instructionSection);
         });
     });
 
-    // Load existing recipes and add new recipe
-    async function addRecipeToJSON(newRecipe) {
-        try {
-            // Load existing recipes
-            const response = await fetch('../Json/recipes.json');
-            const data = await response.json();
-            
-            // Generate new ID
-            const maxId = Math.max(...data.recipes.map(recipe => recipe.id), 0);
-            newRecipe.id = maxId + 1;
-            
-            // Add new recipe to array
-            data.recipes.push(newRecipe);
-            
-            // Save updated recipes using the server endpoint
-            const saveResponse = await fetch('http://localhost:3000/save-recipe', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
-
-            if (!saveResponse.ok) {
-                const errorData = await saveResponse.json();
-                throw new Error(errorData.details || 'Failed to save recipe');
-            }
-
-            return newRecipe;
-        } catch (error) {
-            console.error('Error saving recipe:', error);
-            throw error;
-        }
-    }
-
     // Form submission
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        // Create FormData object
+        const formData = new FormData();
 
         // Collect ingredients
         const ingredientInputs = document.querySelectorAll('input[name="ingredient"]');
@@ -100,10 +66,17 @@ document.addEventListener('DOMContentLoaded', () => {
             IsDessert: false
         });
 
-        // Prepare new recipe object
-        const newRecipe = {
+        // Get the image file
+        const imageInput = document.getElementById('recipeImage');
+        const imageFile = imageInput.files[0];
+        if (!imageFile) {
+            alert('Please select an image file');
+            return;
+        }
+
+        // Prepare recipe data
+        const recipeData = {
             name: document.getElementById('recipeName').value,
-            image: document.getElementById('recipeImage').value,
             cookingTime: document.getElementById('cookingTime').value,
             difficulty: document.getElementById('difficulty').value,
             calories: parseInt(document.getElementById('calories').value),
@@ -117,25 +90,27 @@ document.addEventListener('DOMContentLoaded', () => {
             comments: []
         };
 
+        // Add recipe data and image to FormData
+        formData.append('recipeData', JSON.stringify(recipeData));
+        formData.append('recipeImage', imageFile);
+
         try {
-            const savedRecipe = await addRecipeToJSON(newRecipe);
+            const response = await fetch('http://localhost:3000/save-recipe', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.details || 'Failed to save recipe');
+            }
+
+            const result = await response.json();
             alert('Recipe added successfully!');
-            window.location.href = `recipe-detail.html?id=${savedRecipe.id}`;
+            window.location.href = `recipe-detail.html?id=${result.recipe.id}`;
         } catch (error) {
             console.error('Error saving recipe:', error);
             alert(`Failed to save recipe: ${error.message}`);
         }
     });
-
-    // Modified recipe loading function
-    async function loadRecipes() {
-        try {
-            const response = await fetch('../Json/recipes.json');
-            const data = await response.json();
-            return data.recipes;
-        } catch (error) {
-            console.error('Error loading recipes:', error);
-            return [];
-        }
-    }
 });

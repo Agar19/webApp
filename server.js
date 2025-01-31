@@ -1,20 +1,109 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs').promises;
+const multer = require('multer');
+const cors = require('cors');
 
 const app = express();
-//middleware
-app.use(express.json());
 
-// Serve static files from the 'css' folder
+app.use(cors());
+
+//static files
 app.use('/css', express.static('css'));
-
-// Serve static files from the 'images' folder
 app.use('/images', express.static('images'));
-
-// Serve static files from the 'js' folder for client-side JavaScript
 app.use('/JS', express.static('js'));
 
+// Ensure images directory exists
+const imagesDir = path.join(__dirname, 'images');
+fs.mkdir(imagesDir, { recursive: true }).catch(error => {
+    if (error.code !== 'EEXIST') {
+        console.error('Error creating images directory:', error);
+    }
+});
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, 'images'))
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, 'recipe-' + uniqueSuffix + path.extname(file.originalname))
+    }
+});
+
+
+const upload = multer({ 
+    storage: storage,
+    fileFilter: function (req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+            return cb(new Error('Only image files are allowed!'), false);
+        }
+        cb(null, true);
+    }
+});
+
+app.post('/save-recipe', upload.single('recipeImage'), async (req, res) => {
+    try {
+        if (!req.file) {
+            throw new Error('No image file uploaded');
+        }
+
+        // Get the uploaded image path (relative to frontend)
+        const imagePath = `/images/${req.file.filename}`;
+        
+        // Parse recipe data
+        const recipeData = JSON.parse(req.body.recipeData);
+        
+        // Read existing recipes
+        const recipesPath = path.join(__dirname, 'Json', 'recipes.json');
+        let recipes;
+        
+        try {
+            const recipesContent = await fs.readFile(recipesPath, 'utf8');
+            recipes = JSON.parse(recipesContent);
+        } catch (error) {
+            // If file doesn't exist or is empty, initialize with empty array
+            recipes = { recipes: [] };
+        }
+        
+        // Generate new ID
+        const maxId = recipes.recipes.length > 0 
+            ? Math.max(...recipes.recipes.map(recipe => recipe.id))
+            : 0;
+        
+        // Create new recipe object with image path
+        const newRecipe = {
+            ...recipeData,
+            id: maxId + 1,
+            image: imagePath
+        };
+        
+        // Add new recipe to array
+        recipes.recipes.push(newRecipe);
+        
+        // Create Json directory if it doesn't exist
+        const jsonDir = path.join(__dirname, 'Json');
+        try {
+            await fs.mkdir(jsonDir, { recursive: true });
+        } catch (error) {
+            if (error.code !== 'EEXIST') throw error;
+        }
+        
+        // Save updated recipes
+        await fs.writeFile(recipesPath, JSON.stringify(recipes, null, 4));
+        
+        res.json({ 
+            success: true, 
+            recipe: newRecipe 
+        });
+    } catch (error) {
+        console.error('Error saving recipe:', error);
+        res.status(500).json({ 
+            error: 'Failed to save recipe', 
+            details: error.message 
+        });
+    }
+});
 
 // page routes
 app.get('/pages/:pageName', async (req, res) => {
@@ -70,45 +159,3 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
     console.log('Server running on http://localhost:3000/');
 });
-
-// const express = require('express');
-// const fs = require('fs').promises;
-// const path = require('path');
-// const app = express();
-
-// // Enable CORS and JSON parsing
-// app.use(express.json());
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//     next();
-// });
-
-// // Endpoint to save recipe
-// app.post('/save-recipe', async (req, res) => {
-//     try {
-//         // Update path to match your folder structure
-//         const recipesPath = path.join(__dirname, 'Json', 'recipes.json');
-        
-//         // Log for debugging
-//         console.log('Saving recipe to:', recipesPath);
-//         console.log('Recipe data:', JSON.stringify(req.body, null, 2));
-
-//         await fs.writeFile(recipesPath, JSON.stringify(req.body, null, 4));
-//         res.json({ success: true });
-//     } catch (error) {
-//         console.error('Error saving recipe:', error);
-//         res.status(500).json({ error: 'Failed to save recipe', details: error.message });
-//     }
-// });
-
-// // Add a test endpoint to verify server is working
-// app.get('/test', (req, res) => {
-//     res.json({ message: 'Server is working!' });
-// });
-
-// const PORT = 3000;
-// app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
-//     console.log(`Server directory: ${__dirname}`);
-// });

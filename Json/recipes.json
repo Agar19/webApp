@@ -5,7 +5,7 @@
             "name": "Chicken Tikka Masala",
             "image": "../images/chickenTikka.jpg",
             "cookingTime": "60 mins",
-            "difficulty": "Medium", 
+            "difficulty": "Medium",
             "calories": 400,
             "rating": 4,
             "reviewCount": 210,
@@ -13,7 +13,9 @@
             "IsMeat": true,
             "IsVegan": false,
             "IsDessert": false,
-            "MealType": ["Dinner"],
+            "MealType": [
+                "Dinner"
+            ],
             "ingredients": [
                 "1.5 lbs boneless, skinless chicken breasts",
                 "1 cup plain yogurt",
@@ -48,7 +50,7 @@
                     "text": "Absolutely delicious! The spices were perfectly balanced. Will definitely make again."
                 },
                 {
-                    "user": "Mike R.", 
+                    "user": "Mike R.",
                     "text": "Great recipe. Tip: marinate the chicken overnight for even more flavor."
                 }
             ]
@@ -66,7 +68,9 @@
             "IsMeat": true,
             "IsVegan": false,
             "IsDessert": false,
-            "MealType": ["Dinner"],
+            "MealType": [
+                "Dinner"
+            ],
             "ingredients": [
                 "2 lbs beef chuck, cut into cubes",
                 "1/2 lb bacon, diced",
@@ -117,7 +121,9 @@
             "IsMeat": true,
             "IsVegan": false,
             "IsDessert": false,
-            "MealType": ["Dinner"],
+            "MealType": [
+                "Dinner"
+            ],
             "ingredients": [
                 "1 lb spaghetti",
                 "4 large eggs",
@@ -163,7 +169,10 @@
             "IsMeat": true,
             "IsVegan": false,
             "IsDessert": false,
-            "MealType": ["Dinner", "Lunch"],
+            "MealType": [
+                "Dinner",
+                "Lunch"
+            ],
             "ingredients": [
                 "1 pizza dough",
                 "1/2 cup pizza sauce",
@@ -193,7 +202,10 @@
             "IsMeat": true,
             "IsVegan": false,
             "IsDessert": false,
-            "MealType": ["Dinner", "Lunch"],
+            "MealType": [
+                "Dinner",
+                "Lunch"
+            ],
             "ingredients": [
                 "1 pizza dough",
                 "1/2 cup pizza sauce",
@@ -224,7 +236,9 @@
             "IsMeat": true,
             "IsVegan": false,
             "IsDessert": false,
-            "MealType": ["Dinner"],
+            "MealType": [
+                "Dinner"
+            ],
             "ingredients": [
                 "2 cups all-purpose flour",
                 "1/2 lb ground pork",
@@ -256,7 +270,9 @@
             "IsMeat": false,
             "IsVegan": false,
             "IsDessert": true,
-            "MealType": ["Dessert"],
+            "MealType": [
+                "Dessert"
+            ],
             "ingredients": [
                 "1 cup butter, softened",
                 "1 cup sugar",
@@ -291,7 +307,9 @@
             "IsMeat": false,
             "IsVegan": false,
             "IsDessert": true,
-            "MealType": ["Dessert"],
+            "MealType": [
+                "Dessert"
+            ],
             "ingredients": [
                 "2 cups heavy cream",
                 "1 cup whole milk",
@@ -319,7 +337,10 @@
             "IsMeat": false,
             "IsVegan": true,
             "IsDessert": false,
-            "MealType": ["Dinner", "Lunch"],
+            "MealType": [
+                "Dinner",
+                "Lunch"
+            ],
             "ingredients": [
                 "1 cup quinoa",
                 "1 sweet potato, diced",
@@ -350,7 +371,10 @@
             "IsMeat": false,
             "IsVegan": true,
             "IsDessert": false,
-            "MealType": ["Dinner", "Lunch"],
+            "MealType": [
+                "Dinner",
+                "Lunch"
+            ],
             "ingredients": [
                 "1 cup lentils",
                 "1 onion, chopped",
@@ -368,6 +392,38 @@
                 "Season with spices and simmer.",
                 "Serve with crusty bread."
             ]
+        },
+        {
+            "name": "Tsuivan - Mongolian fried noodles",
+            "cookingTime": "30 mins",
+            "difficulty": "Easy",
+            "calories": 800,
+            "rating": 0,
+            "reviewCount": 0,
+            "description": "Mongolian classic fried noodles. ",
+            "ingredients": [
+                "Meat",
+                "salt",
+                "Noodles",
+                "Onion",
+                "Garlic",
+                "Cooking oil any type",
+                "water",
+                "Carrot"
+            ],
+            "instructions": [
+                "fry everything except noodles then add 1 cup of water when it boils add your noodles then wait for 5-10 mins. After water fully vaporizes mix every thing"
+            ],
+            "MealType": [
+                "Dinner"
+            ],
+            "IsMeat": true,
+            "IsVegan": false,
+            "IsVegetarian": false,
+            "IsDessert": false,
+            "comments": [],
+            "id": 11,
+            "image": "/images/recipe-1738313519432-377759149.jpg"
         }
     ]
 }
