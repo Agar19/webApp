@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await response.json();
             alert('Recipe added successfully!');
-            window.location.href = `recipe-detail.html?id=${result.recipe.id}`;
+            window.location.href = `/pages/recipe-detail?id=${result.recipe.id}`;
         } catch (error) {
             console.error('Error saving recipe:', error);
             alert(`Failed to save recipe: ${error.message}`);
