@@ -49,17 +49,19 @@ main {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 1rem;
+    white-space: nowrap;
+    padding-bottom: 10px;
 }
 
-/* .recipe article {
+ .recipe article {
     flex: 0 0 300px;
     background-color: #fff;
-    border-radiusrecipe
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     scroll-snap-align: start;
     transition: transform 0.3s ease;
     overflow: hidden;
-} */
+} 
 
 .recipe article img {
     width: 100%;
