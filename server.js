@@ -142,8 +142,6 @@ app.get('/Json/:fileName', async (req, res) => {
         }
 
         const filePath = path.join(__dirname, 'Json', fileName); 
-
-        console.log('Trying to read file:', filePath); // Debug code
         
         const content = await fs.readFile(filePath, 'utf8');
         res.json(JSON.parse(content));
