@@ -1,5 +1,8 @@
+const path = require('path');
+const fs = require('fs/promises');
+
 exports.setupStaticRoutes = (app) => {
-    app.get('./pages/:pageName', async (req, res) => {
+    app.get('/pages/:pageName', async (req, res) => {
         try {
             const pageName = req.params.pageName;
             const filePath = path.join(__dirname, 'pages', `${pageName}.html`);
@@ -12,7 +15,7 @@ exports.setupStaticRoutes = (app) => {
     });
     
     // JS route for server-side JavaScript
-    app.get('./JS/:scriptName', async (req, res) => {
+    app.get('/JS/:scriptName', async (req, res) => {
         try {
             const scriptName = req.params.scriptName;
             const filePath = path.join(__dirname, 'JS', `${scriptName}.js`);
@@ -26,7 +29,7 @@ exports.setupStaticRoutes = (app) => {
     });
     
     // Json route
-    app.get('./Json/:fileName', async (req, res) => {
+    app.get('/Json/:fileName', async (req, res) => {
         try {
             const fileName = req.params.fileName;
     
@@ -36,7 +39,7 @@ exports.setupStaticRoutes = (app) => {
     
             const filePath = path.join(__dirname, 'Json', fileName); 
     
-            console.log('Trying to read file:', filePath); // Debug code
+            //console.log('Trying to read file:', filePath); // Debug code
             
             const content = await fs.readFile(filePath, 'utf8');
             res.json(JSON.parse(content));
