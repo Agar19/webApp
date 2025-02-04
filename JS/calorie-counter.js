@@ -3,35 +3,25 @@ const ingredientsDatabase = [
     { name: 'Chicken Breast', calories: 165 },
     { name: 'Salmon', calories: 208 },
     { name: 'Tuna (Canned)', calories: 128 },
-    { name: 'Beef (Lean)', calories: 250 },
-    { name: 'Pork Loin', calories: 242 },
-    { name: 'Turkey Breast', calories: 161 },
+    { name: 'Beef', calories: 250 },
+    { name: 'Mutton', calories: 270 },
+    { name: 'Pork', calories: 242 },
     { name: 'Tofu', calories: 144 },
     { name: 'Egg', calories: 78 },
-    { name: 'Greek Yogurt', calories: 100 },
-    { name: 'Cottage Cheese', calories: 98 },
-
-    // Grains and Starches
     { name: 'Brown Rice', calories: 111 },
     { name: 'White Rice', calories: 130 },
-    { name: 'Quinoa', calories: 120 },
     { name: 'Oats', calories: 389 },
     { name: 'Whole Wheat Bread', calories: 247 },
     { name: 'White Bread', calories: 266 },
     { name: 'Pasta (Cooked)', calories: 131 },
     { name: 'Sweet Potato', calories: 86 },
     { name: 'Potato', calories: 77 },
-
-    // Vegetables
     { name: 'Broccoli', calories: 55 },
     { name: 'Spinach', calories: 23 },
     { name: 'Carrots', calories: 41 },
-    { name: 'Cauliflower', calories: 25 },
     { name: 'Cucumber', calories: 16 },
-    { name: 'Bell Pepper', calories: 31 },
     { name: 'Tomato', calories: 18 },
     { name: 'Lettuce', calories: 15 },
-    { name: 'Zucchini', calories: 17 },
 
     // Fruits
     { name: 'Apple', calories: 95 },
@@ -48,29 +38,18 @@ const ingredientsDatabase = [
     { name: 'Almonds', calories: 579 },
     { name: 'Walnuts', calories: 654 },
     { name: 'Peanuts', calories: 567 },
-    { name: 'Chia Seeds', calories: 486 },
-    { name: 'Sunflower Seeds', calories: 584 },
 
     // Dairy and Alternatives
-    { name: 'Milk (Whole)', calories: 61 },
-    { name: 'Almond Milk', calories: 30 },
-    { name: 'Soy Milk', calories: 54 },
-    { name: 'Cheese (Cheddar)', calories: 402 },
+    { name: 'Milk', calories: 61 },
+    { name: 'Cheese', calories: 402 },
 
     // Oils and Fats
     { name: 'Olive Oil', calories: 119 },
-    { name: 'Coconut Oil', calories: 117 },
     { name: 'Butter', calories: 717 },
     { name: 'Mayonnaise', calories: 680 },
 
-    // Legumes
-    { name: 'Black Beans', calories: 132 },
-    { name: 'Chickpeas', calories: 164 },
-    { name: 'Lentils', calories: 116 },
-    { name: 'Kidney Beans', calories: 127 },
-
     // Snacks and Extras
-    { name: 'Popcorn (Air-popped)', calories: 31 },
+    { name: 'Popcorn', calories: 31 },
     { name: 'Dark Chocolate', calories: 546 },
     { name: 'Honey', calories: 304 }
 ];
