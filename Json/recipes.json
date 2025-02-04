@@ -424,6 +424,36 @@
             "comments": [],
             "id": 11,
             "image": "/images/recipe-1738313519432-377759149.jpg"
+        },
+        {
+            "name": "broccoli soup",
+            "cookingTime": "30 mins",
+            "difficulty": "Easy",
+            "calories": 500,
+            "rating": 0,
+            "reviewCount": 0,
+            "description": "Warm broccoli soup ",
+            "ingredients": [
+                "Chicken stock with some chicken meat",
+                "Broccoli",
+                "Butter",
+                "Onion"
+            ],
+            "instructions": [
+                "Fry onion and broccoli using butter for 1 minute then add your chicken stock",
+                "Blend everything and ready"
+            ],
+            "MealType": [
+                "Lunch",
+                "Dinner"
+            ],
+            "IsMeat": true,
+            "IsVegan": false,
+            "IsVegetarian": false,
+            "IsDessert": false,
+            "comments": [],
+            "id": 12,
+            "image": "/images/recipe-1738672768975-144720368.jpg"
         }
     ]
 }
