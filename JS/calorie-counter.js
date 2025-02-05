@@ -1,5 +1,5 @@
 const ingredientsDatabase = [
-    // Proteins
+
     { name: 'Chicken Breast', calories: 165 },
     { name: 'Salmon', calories: 208 },
     { name: 'Tuna (Canned)', calories: 128 },
@@ -23,7 +23,6 @@ const ingredientsDatabase = [
     { name: 'Tomato', calories: 18 },
     { name: 'Lettuce', calories: 15 },
 
-    // Fruits
     { name: 'Apple', calories: 95 },
     { name: 'Banana', calories: 105 },
     { name: 'Orange', calories: 62 },
@@ -34,21 +33,18 @@ const ingredientsDatabase = [
     { name: 'Grapes', calories: 69 },
     { name: 'Mango', calories: 60 },
 
-    // Nuts and Seeds
     { name: 'Almonds', calories: 579 },
     { name: 'Walnuts', calories: 654 },
     { name: 'Peanuts', calories: 567 },
 
-    // Dairy and Alternatives
+
     { name: 'Milk', calories: 61 },
     { name: 'Cheese', calories: 402 },
 
-    // Oils and Fats
     { name: 'Olive Oil', calories: 119 },
     { name: 'Butter', calories: 717 },
     { name: 'Mayonnaise', calories: 680 },
 
-    // Snacks and Extras
     { name: 'Popcorn', calories: 31 },
     { name: 'Dark Chocolate', calories: 546 },
     { name: 'Honey', calories: 304 }
@@ -63,7 +59,7 @@ const ingredientsList = document.getElementById('ingredients-list');
 const totalCaloriesSpan = document.getElementById('total-calories');
 const resetMealBtn = document.getElementById('reset-meal');
 
-// Populate ingredient dropdown
+// dropdown for ingredient
 function populateIngredientDropdown() {
     ingredientsDatabase.forEach(ingredient => {
         const option = document.createElement('option');

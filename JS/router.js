@@ -15,7 +15,7 @@ const router = {
     },
 
     routes: {
-        "": "./pages/mainPage.html",  // Root path
+        "": "./pages/mainPage.html",  
         "404": "./pages/404.html",
         "main": "./pages/mainPage.html",
         "profile": "./pages/profile.html",

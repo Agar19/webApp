@@ -19,7 +19,6 @@ main {
     margin-top: var(--header-height);
 }
 
-/* Recipes Filters Styles */
 .recipes-filters {
     background-color: #fff;
     padding: 1rem;

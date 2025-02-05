@@ -129,7 +129,7 @@
             const endIndex = startIndex + recipesPerPage;
             const pageRecipes = filteredRecipes.slice(startIndex, endIndex);
 
-            recipesContainer.innerHTML = ''; // Clear existing content
+            recipesContainer.innerHTML = ''; 
 
             pageRecipes.forEach(recipe => {
                 const articleElement = document.createElement('article');
@@ -150,7 +150,7 @@
                     </section>
                 `;
 
-                // Add click event to navigate to recipe detail
+                // click event deer recipe-detail page ru orno
                 articleElement.addEventListener('click', () => {
                     window.location.href = `../pages/recipe-detail?id=${recipe.id}`;
                 });
@@ -158,7 +158,6 @@
                 recipesContainer.appendChild(articleElement);
             });
 
-            // Update pagination
             const totalPages = Math.ceil(filteredRecipes.length / recipesPerPage);
             pageNumberSpan.textContent = `Page ${page} of ${totalPages}`;
 

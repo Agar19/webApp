@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ingredientsContainer = document.getElementById('ingredientsContainer');
     const instructionsContainer = document.getElementById('instructionsContainer');
 
-    // Dynamic ingredient addition
+    // Dynamic ingredient
     addIngredientBtn.addEventListener('click', () => {
         const ingredientSection = document.createElement('div');
         ingredientSection.classList.add('ingredient-section');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Dynamic instruction addition
+    // Dynamic hoolnii zaavar avah
     addInstructionBtn.addEventListener('click', () => {
         const instructionSection = document.createElement('div');
         instructionSection.classList.add('instruction-section');
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form submission
+    // Submit button
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             IsDessert: false
         });
 
-        // Get the image file
+        // image hiih
         const imageInput = document.getElementById('recipeImage');
         const imageFile = imageInput.files[0];
         if (!imageFile) {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Prepare recipe data
+        // json file ruu hiih ugugdliin butets
         const recipeData = {
             name: document.getElementById('recipeName').value,
             cookingTime: document.getElementById('cookingTime').value,
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             comments: []
         };
 
-        // Add recipe data and image to FormData
+        // save recipe
         formData.append('recipeData', JSON.stringify(recipeData));
         formData.append('recipeImage', imageFile);
 

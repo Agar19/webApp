@@ -30,15 +30,14 @@ class RecipeManager {
         return this.recipes.find(recipe => recipe.id === id);
     }
 
-    // Display recipes in containers
+    // Display recipes in json and html
     displayInContainer() {
         const recipeContainers = document.querySelectorAll('.recipe-container');
         
         if (recipeContainers.length) {
             recipeContainers.forEach((container, index) => {
-                container.innerHTML = ''; // Clear existing content
-                
-                // Slice recipes based on the section 
+                container.innerHTML = '';
+            
                 const sectionRecipes = this.recipes.slice(index * 6, (index + 1) * 6);
                 
                 sectionRecipes.forEach(recipe => {
@@ -70,10 +69,11 @@ class RecipeManager {
         }
     }
 }
+//recipe detail page ruu data oruulah
 async function displayRecipeDetails() {
     const recipeDetailContainer = document.querySelector('.recipe-detail');
     if (recipeDetailContainer) {
-        // Get recipe ID from URL
+        // Get recipe ID
         const urlParams = new URLSearchParams(window.location.search);
         const recipeId = parseInt(urlParams.get('id'));
 
@@ -84,35 +84,34 @@ async function displayRecipeDetails() {
             const recipe = data.recipes.find(r => r.id === recipeId);
 
             if (recipe) {
-                // Update hero section
+              
                 recipeDetailContainer.querySelector('.recipe-hero img').src = recipe.image;
                 recipeDetailContainer.querySelector('.recipe-hero h1').textContent = recipe.name;
-                
-                // Update meta information
+               
                 const metaElements = recipeDetailContainer.querySelectorAll('.recipe-meta span');
                 metaElements[0].textContent = `⏰ ${recipe.cookingTime}`;
                 metaElements[1].textContent = `🔥 ${recipe.difficulty}`;
                 metaElements[2].textContent = `🍽️ ${recipe.calories} Cal`;
 
-                // Update review section
+               
                 const starsElement = recipeDetailContainer.querySelector('.recipe-review .stars');
                 const reviewCountElement = recipeDetailContainer.querySelector('.recipe-review .review-count');
                 starsElement.textContent = '★'.repeat(recipe.rating) + '☆'.repeat(5 - recipe.rating);
                 reviewCountElement.textContent = `(${recipe.reviewCount} reviews)`;
 
-                // Update description
+            
                 const descriptionElement = recipeDetailContainer.querySelector('.recipe-hero-details p');
                 descriptionElement.textContent = recipe.description;
 
-                // Populate ingredients
+                
                 const ingredientsList = recipeDetailContainer.querySelector('.ingredients ul');
                 ingredientsList.innerHTML = recipe.ingredients.map(ing => `<li>${ing}</li>`).join('');
 
-                // Populate instructions
+             
                 const instructionsList = recipeDetailContainer.querySelector('.instructions ol');
                 instructionsList.innerHTML = recipe.instructions.map(inst => `<li>${inst}</li>`).join('');
 
-                // Populate comments
+                
                 const commentsSection = recipeDetailContainer.querySelector('.comments');
                 const commentsContainer = commentsSection.querySelector('.comment-list');
                 commentsContainer.innerHTML = recipe.comments.map(comment => `

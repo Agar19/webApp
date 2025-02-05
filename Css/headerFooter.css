@@ -128,8 +128,8 @@ footer article h3 {
     header {
         flex-wrap: wrap;
         margin-top: 0;
-        height: auto; /* Allow it to grow naturally */
-        padding-bottom: 0.5rem; /* Prevent extra spacing */
+        height: auto; 
+        padding-bottom: 0.5rem; 
     }
 
     .menu-button {

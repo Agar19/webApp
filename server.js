@@ -13,7 +13,7 @@ app.use('/css', express.static('css'));
 app.use('/images', express.static('images'));
 app.use('/JS', express.static('js'));
 
-// Ensure images directory exists
+// Ensure images file exists
 const imagesDir = path.join(__dirname, 'images');
 fs.mkdir(imagesDir, { recursive: true }).catch(error => {
     if (error.code !== 'EEXIST') {
@@ -48,13 +48,12 @@ app.post('/save-recipe', upload.single('recipeImage'), async (req, res) => {
             throw new Error('No image file uploaded');
         }
 
-        // Get the uploaded image path (relative to frontend)
+        // Get the uploaded image path
         const imagePath = `/images/${req.file.filename}`;
         
         // Parse recipe data
         const recipeData = JSON.parse(req.body.recipeData);
         
-        // Read existing recipes
         const recipesPath = path.join(__dirname, 'Json', 'recipes.json');
         let recipes;
         
